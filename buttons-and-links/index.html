@@ -1,0 +1,267 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1.0"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/bulma@0.8.0/css/bulma.min.css"
+    />
+    <link
+      href="https://use.fontawesome.com/99d8f1b106.css"
+      media="all"
+      rel="stylesheet"
+    />
+    <title>Buttons and Links tool test page</title>
+    <style>
+      .fake-btn {
+        text-decoration: underline;
+      }
+    </style>
+  </head>
+  <body>
+    <div id="wrapper">
+      <header class="hero is-medium is-info is-bold">
+        <div class="hero-body">
+          <div class="container">
+            <h1 class="title">
+              Buttons and Links tool test page
+            </h1>
+            <a class="button" href="../index.html">
+              Go home
+            </a>
+            <a class="button" href="./customLinks.html">
+              Custom links
+            </a>
+            <a
+              class="button"
+              href="./links-with-images.html"
+            >
+              Image links
+            </a>
+            <a class="button" href="./customButtons.html">
+              Custom buttons
+            </a>
+          </div>
+        </div>
+      </header>
+      <main>
+        <section class="section">
+          <div class="container">
+            <h3 class="title">Buttons And Links</h3>
+            <p class="subtitle">
+              This section contains some buttons and links.
+            </p>
+            <div>
+              <h4 class="title">Below are Buttons</h4>
+              <button>Submit Button</button>
+              <br />
+              <button class="button is-light">
+                Click me!
+              </button>
+            </div>
+            <div>
+              <h4 class="title">
+                Below are Links for testcase C6310
+              </h4>
+              <p>
+                Below is the link
+                <em>without any link text</em>
+              </p>
+              <a href="../forms/index.html"><em></em></a>
+              <p>No link text is available</p>
+              <hr />
+              <p>
+                Below is the link with link text +
+                <em>aria-label</em>
+              </p>
+              <a
+                href="../images/index.html"
+                aria-label="aria-label text"
+              >
+                Images tool test page
+              </a>
+              <hr />
+              <p>
+                Below is the link with link text +
+                <em>title</em>
+              </p>
+              <a
+                href="../aria-modal/index.html"
+                title="title text"
+              >
+                Aria-modal tool test page
+              </a>
+              <hr />
+              <div id="link_element">
+                aria-labelledby text
+              </div>
+              <p>
+                Below is the link with link text +
+                <em>aria-labelledby</em>
+              </p>
+              <a
+                href="../lists/index.html"
+                aria-labelledby="link_element"
+              >
+                Lists tool test page
+              </a>
+              <hr />
+              <div id="info">aria-describedby text</div>
+              <p>
+                Below is the link with link text +
+                <em>aria-describedby</em>
+              </p>
+              <a
+                href="../lists/index.html"
+                aria-describedby="info"
+              >
+                Lists tool test page
+              </a>
+              <hr />
+              <p>
+                Below is the link with
+                <em>valid link text</em>
+              </p>
+              <a href="../forms/index.html">
+                opens forms tool test page
+              </a>
+              <hr />
+              <p>
+                Below is the link with
+                <em>invalid link text</em>
+              </p>
+              <a href="../forms/index.html">
+                opens images tool test page
+              </a>
+              <hr />
+            </div>
+          </div>
+          <hr />
+        </section>
+        <section class="section">
+          <div class="container">
+            <h3 class="title">
+              Below is the missing Button/Link which is not
+              highlighted by the tool
+            </h3>
+            <p class="subtitle">
+              Select the following element on the question
+              <em>
+                Select any button/link elements not already
+                highlighted
+              </em>
+            </p>
+            <div class="fake-btn" onclick="alert('hi')">
+              Button/Link which is missed by tool
+            </div>
+          </div>
+          <hr />
+        </section>
+        <section class="section">
+          <div class="container">
+            <h3 class="title">
+              Below are the Buttons and Links which doesn't
+              have role
+            </h3>
+            <div class="fake-btn" onclick="alert('hi')">
+              Button
+            </div>
+            <div class="fake-btn" onclick="alert('hi')">
+              Link
+            </div>
+            <p class="subtitle">
+              The above buttons and links should raise
+              <em>
+                "The custom button/link does not have a
+                role"
+              </em>
+              issue
+            </p>
+          </div>
+          <hr />
+        </section>
+        <section class="section">
+          <div class="container">
+            <h3 class="title">
+              Below is a image associate with link
+            </h3>
+            <p class="subtitle">
+              <em>
+                Click the below image to open images tool
+                test page
+              </em>
+            </p>
+            <a
+              href="../images/index.html"
+              target="_blank"
+              rel="noopener"
+            >
+              <img
+                src="../images/sample.gif"
+                alt="images tool link"
+              />
+            </a>
+          </div>
+          <hr />
+        </section>
+        <section class="section">
+          <div class="container">
+            <h2 class="title is-medium">iframe</h2>
+            <iframe src="./frame1.html"></iframe>
+          </div>
+          <hr />
+        </section>
+        <section class="section">
+          <h2 class="title is-medium">shadow DOM (open)</h2>
+          <div id="shadow-root"></div>
+          <hr />
+        </section>
+      </main>
+      <footer class="footer">
+        <div class="content has-text-centered">
+          <p>
+            blah
+            <strong>blah</strong>
+            blah
+            <strong>footer</strong>
+            with a
+            <a href="../index.html">link</a>
+            .
+          </p>
+        </div>
+      </footer>
+    </div>
+    <script>
+      /**
+       * Shadow DOM with Buttons and Links
+       */
+      const shadowRoot =
+        document.getElementById('shadow-root')
+      const shadow = shadowRoot.attachShadow({
+        mode: 'open'
+      })
+      // create a shadow button
+      const shadowButton1 = document.createElement('button')
+      shadowButton1.innerHTML = 'Shadow stop 1'
+      // create another shadow button
+      const shadowButton2 = document.createElement('button')
+      shadowButton2.innerHTML = 'Shadow stop 2'
+      // create a shadow links
+      const shadowLink1 = document.createElement('a')
+      shadowLink1.innerHTML = 'Shadow stop 3'
+      shadowLink1.href = './frame1.html'
+      const shadowLink2 = document.createElement('a')
+      shadowLink2.innerHTML = 'Shadow stop 4'
+      shadowLink2.href = '../forms/index.html'
+      // add the buttons to the shadow DOM
+      shadow.appendChild(shadowButton1)
+      shadow.appendChild(shadowButton2)
+      shadow.appendChild(shadowLink1)
+      shadow.appendChild(shadowLink2)
+    </script>
+  </body>
+</html>

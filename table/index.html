@@ -1,0 +1,660 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1.0"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/bulma@0.8.0/css/bulma.min.css"
+    />
+    <link
+      href="https://use.fontawesome.com/99d8f1b106.css"
+      media="all"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="./table.css" />
+    <title>Table tool test page</title>
+  </head>
+
+  <body>
+    <div id="wrapper">
+      <header class="hero is-medium is-info is-bold">
+        <div class="hero-body">
+          <div class="container">
+            <h1 class="title">Table tool test page</h1>
+          </div>
+        </div>
+      </header>
+      <main>
+        <section class="section">
+          <div class="container">
+            <h3 class="title">Implicit Layout Table</h3>
+            <table class="layout-table">
+              <tbody>
+                <tr>
+                  <td>A</td>
+                  <td>B</td>
+                  <td>C</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+          <hr />
+        </section>
+        <section class="section">
+          <div class="container">
+            <h3 class="title">Explicit Layout Table</h3>
+            <table role="presentation" class="layout-table">
+              <tbody>
+                <tr>
+                  <td>A</td>
+                  <td>B</td>
+                  <td>C</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+          <hr />
+        </section>
+        <section class="section">
+          <div class="container">
+            <h3 class="title">Heuristic Data Table</h3>
+            <p>
+              A table that doesn't have any header markup,
+              but screen readers are still likely to treat
+              as a data table.
+            </p>
+            <table class="layout-table">
+              <tbody>
+                <tr>
+                  <td>A</td>
+                  <td>B</td>
+                  <td>C</td>
+                  <td>D</td>
+                  <td>E</td>
+                  <td>F</td>
+                  <td>G</td>
+                  <td>H</td>
+                </tr>
+                <tr>
+                  <td>I</td>
+                  <td>J</td>
+                  <td>K</td>
+                  <td>L</td>
+                  <td>M</td>
+                  <td>N</td>
+                  <td>O</td>
+                  <td>P</td>
+                </tr>
+                <tr>
+                  <td>Q</td>
+                  <td>R</td>
+                  <td>S</td>
+                  <td>T</td>
+                  <td>U</td>
+                  <td>V</td>
+                  <td>W</td>
+                  <td>X</td>
+                </tr>
+                <tr>
+                  <td>Y</td>
+                  <td>Z</td>
+                  <td>1</td>
+                  <td>2</td>
+                  <td>3</td>
+                  <td>4</td>
+                  <td>5</td>
+                  <td>6</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+          <hr />
+        </section>
+        <section class="section">
+          <div class="container">
+            <h3 id="wannabe-layout-table" class="title">
+              Wannabe Layout Table With Data Table Markup
+            </h3>
+            <table
+              aria-labelledby="wannabe-layout-table"
+              class="layout-table"
+            >
+              <caption>
+                This caption makes this a data table
+              </caption>
+              <tbody>
+                <tr>
+                  <td>A</td>
+                  <td>B</td>
+                  <td>C</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+          <hr />
+        </section>
+        <section class="section">
+          <div class="container">
+            <h3 class="title">
+              Looks like a table, but is not
+            </h3>
+            <div class="data-table">
+              <div class="fake-row">
+                <div class="th">ID</div>
+                <div class="th">First Name</div>
+                <div class="th">Last Name</div>
+              </div>
+              <div class="fake-row">
+                <div class="td">1</div>
+                <div class="td">Chris</div>
+                <div class="td">Alpine</div>
+              </div>
+              <div class="fake-row">
+                <div class="td">2</div>
+                <div class="td">Harry</div>
+                <div class="td">Trotter</div>
+              </div>
+            </div>
+          </div>
+          <hr />
+        </section>
+        <section class="section">
+          <div class="container">
+            <h3 id="one-header-row-table" class="title">
+              Table with one Row of Headers
+            </h3>
+            <table
+              aria-labelledby="one-header-row-table"
+              class="data-table"
+              role="table"
+            >
+              <tr>
+                <th>ID</th>
+                <th>First Name</th>
+                <th>Last Name</th>
+              </tr>
+              <tr>
+                <td>1</td>
+                <td>Chris</td>
+                <td>Alpine</td>
+              </tr>
+              <tr>
+                <td>2</td>
+                <td>Harry</td>
+                <td>Trotter</td>
+              </tr>
+            </table>
+          </div>
+          <hr />
+        </section>
+        <section class="section">
+          <div class="container">
+            <h3 id="one-header-column-table" class="title">
+              Table with one Column of Headers
+            </h3>
+            <table
+              aria-labelledby="one-header-column-table"
+              class="data-table"
+            >
+              <tr>
+                <th>ID</th>
+                <td>1</td>
+                <td>2</td>
+              </tr>
+              <tr>
+                <th>First Name</th>
+                <td>Chris</td>
+                <td>Harry</td>
+              </tr>
+              <tr>
+                <th>Last Name</th>
+                <td>Alpine</td>
+                <td>Trotter</td>
+              </tr>
+            </table>
+          </div>
+          <hr />
+        </section>
+        <section class="section">
+          <div class="container">
+            <h3
+              id="one-header-row-and-column-table"
+              class="title"
+            >
+              Table with one Row and one Column of Headers
+            </h3>
+            <table
+              aria-labelledby="one-header-row-and-column-table"
+              class="data-table"
+            >
+              <tr>
+                <td></td>
+                <th scope="col">Summer</th>
+                <th scope="col">Winter</th>
+              </tr>
+              <tr>
+                <th scope="row">High</th>
+                <td>104 F</td>
+                <td>32 F</td>
+              </tr>
+              <tr>
+                <th scope="row">Low</th>
+                <td>48 F</td>
+                <td>-14 F</td>
+              </tr>
+            </table>
+          </div>
+          <hr />
+        </section>
+        <section class="section">
+          <div class="container">
+            <h3 id="irregular-headers-table" class="title">
+              Table with Irregular Headers
+            </h3>
+            <table
+              aria-labelledby="irregular-headers-table"
+              class="data-table"
+            >
+              <col />
+              <colgroup span="2"></colgroup>
+              <colgroup span="2"></colgroup>
+              <tr>
+                <td rowspan="2"></td>
+                <th colspan="2" scope="colgroup">Summer</th>
+                <th colspan="2" scope="colgroup">Winter</th>
+              </tr>
+              <tr>
+                <th scope="col">High</th>
+                <th scope="col">Low</th>
+                <th scope="col">High</th>
+                <th scope="col">Low</th>
+              </tr>
+              <tr>
+                <th scope="row">Fahrenheit</th>
+                <td>104</td>
+                <td>48</td>
+                <td>32</td>
+                <td>-14</td>
+              </tr>
+              <tr>
+                <th scope="row">Celsius</th>
+                <td>40</td>
+                <td>8.9</td>
+                <td>0</td>
+                <td>-25.6</td>
+              </tr>
+            </table>
+          </div>
+          <hr />
+        </section>
+        <section class="section">
+          <div class="container">
+            <h3
+              id="multi-level-headers-table"
+              class="title"
+            >
+              Table with Multi-level Headers
+            </h3>
+            <table
+              aria-labelledby="multi-level-headers-table"
+              class="data-table"
+            >
+              <tr>
+                <th id="blank">&nbsp;</th>
+                <th id="co1" headers="blank">Winter</th>
+                <th id="co2" headers="blank">Spring</th>
+              </tr>
+              <tr>
+                <th id="c1" headers="blank">High</th>
+                <td headers="co1 c1">32 F</td>
+                <td headers="co2 c1">66 F</td>
+              </tr>
+              <tr>
+                <th id="p1" headers="blank">Low</th>
+                <td headers="co1 p1">-12 F</td>
+                <td headers="co2 p1">22 F</td>
+              </tr>
+              <tr>
+                <th>&nbsp;</th>
+                <th id="co3" headers="blank">Summer</th>
+                <th id="co4" headers="blank">Fall</th>
+              </tr>
+              <tr>
+                <th id="c2" headers="blank">High</th>
+                <td headers="co3 c2">103 F</td>
+                <td headers="co4 c2">55 F</td>
+              </tr>
+              <tr>
+                <th id="p2" headers="blank">Low</th>
+                <td headers="co3 p2">48 F</td>
+                <td headers="co4 p2">10 F</td>
+              </tr>
+            </table>
+          </div>
+          <hr />
+        </section>
+        <section class="section">
+          <div class="container">
+            <h3
+              id="missing-header-markup-table"
+              class="title"
+            >
+              Missing Header Markup
+            </h3>
+            <table
+              aria-labelledby="missing-header-markup-table"
+              class="data-table"
+            >
+              <tr>
+                <td class="th">ID</td>
+                <th>First Name</th>
+                <th>Last Name</th>
+              </tr>
+              <tr>
+                <td>1</td>
+                <td>Chris</td>
+                <td>Alpine</td>
+              </tr>
+              <tr>
+                <td>2</td>
+                <td>Harry</td>
+                <td>Trotter</td>
+              </tr>
+            </table>
+          </div>
+          <hr />
+        </section>
+        <section class="section">
+          <div class="container">
+            <h3
+              id="misapplied-header-markup-table"
+              class="title"
+            >
+              Misapplied Header Markup
+            </h3>
+            <table
+              aria-labelledby="misapplied-header-markup-table"
+              class="data-table"
+            >
+              <tr>
+                <th>ID</th>
+                <th>First Name</th>
+                <th>Last Name</th>
+              </tr>
+              <tr>
+                <th>1</th>
+                <td>Chris</td>
+                <td>Alpine</td>
+              </tr>
+              <tr>
+                <td>2</td>
+                <td>Harry</td>
+                <td>Trotter</td>
+              </tr>
+            </table>
+          </div>
+          <hr />
+        </section>
+        <section class="section">
+          <div class="container">
+            <h3
+              id="incorrect-header-association-table"
+              class="title"
+            >
+              Incorrect Header Association
+            </h3>
+            <table
+              aria-labelledby="incorrect-header-association-table"
+              class="data-table"
+            >
+              <tr>
+                <th id="blank">&nbsp;</th>
+                <th id="summer" headers="blank">Summer</th>
+                <th headers="blank">Winter</th>
+              </tr>
+              <tr>
+                <th id="high" headers="blank">High</th>
+                <td headers="summer low">104 F</td>
+                <td headers="winter high">32 F</td>
+              </tr>
+              <tr>
+                <th id="low" headers="blank">Low</th>
+                <td headers="summer low">48 F</td>
+                <td headers="winter low">-14 F</td>
+              </tr>
+            </table>
+          </div>
+          <hr />
+        </section>
+        <section class="section">
+          <div class="container">
+            <h3
+              id="incorrect-header-scope-table"
+              class="title"
+            >
+              Table with incorrect Header Scope
+            </h3>
+            <table
+              aria-labelledby="incorrect-header-scope-table"
+              class="data-table"
+            >
+              <tr>
+                <td></td>
+                <th scope="row">Summer</th>
+                <th scope="col">Winter</th>
+              </tr>
+              <tr>
+                <th scope="col">High</th>
+                <td>104 F</td>
+                <td>32 F</td>
+              </tr>
+              <tr>
+                <th scope="row">Low</th>
+                <td>48 F</td>
+                <td>-14 F</td>
+              </tr>
+            </table>
+          </div>
+          <hr />
+        </section>
+        <section class="section">
+          <div class="container">
+            <h2 id="iframe-with-tables" class="title">
+              Iframe with tables
+            </h2>
+            <iframe
+              width="500"
+              aria-labelledby="iframe-with-tables"
+              src="./frame.html"
+            ></iframe>
+          </div>
+          <hr />
+        </section>
+        <section class="section">
+          <div class="container">
+            <h2 class="title">
+              Missing Header Markup Table In Shadow DOM
+            </h2>
+            <div id="shadow-root"></div>
+          </div>
+          <hr />
+        </section>
+        <section class="section">
+          <div class="container">
+            <h3 id="offset-column-headers" class="title">
+              Table with Offset Column of Headers
+            </h3>
+            <table
+              aria-labelledby="offset-column-headers"
+              class="data-table"
+            >
+              <thead>
+                <tr>
+                  <th scope="col">ID</th>
+                  <th scope="col">Name</th>
+                  <th scope="col">Age</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td>1</td>
+                  <th scope="row">John</th>
+                  <td>25</td>
+                </tr>
+                <tr>
+                  <td>2</td>
+                  <th scope="row">Steve</th>
+                  <td>30</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+          <hr />
+        </section>
+        <section>
+          <h3 id="role-table" class="title">
+            Table specified by role=table
+          </h3>
+          <div
+            role="table"
+            aria-label="Students"
+            aria-describedby="students_table_desc"
+            style="padding: 50px"
+          >
+            <div id="students_table_desc">
+              Students currently enrolled in WAI-ARIA 101
+              for the coming semester
+            </div>
+            <div role="rowgroup">
+              <div role="row">
+                <span role="columnheader">First Name</span>
+                <span role="columnheader">Last Name</span>
+                <span role="columnheader">Company</span>
+                <span role="columnheader">Address</span>
+              </div>
+            </div>
+            <div role="rowgroup">
+              <div role="row">
+                <span role="cell">Fred</span>
+                <span role="cell">Jackson</span>
+                <span role="cell">Acme, Inc.</span>
+                <span role="cell">123 Broad St.</span>
+              </div>
+              <div role="row">
+                <span role="cell">Sara</span>
+                <span role="cell">James</span>
+                <span role="cell">Acme, Inc.</span>
+                <span role="cell">123 Broad St.</span>
+              </div>
+              <div role="row">
+                <span role="cell">Ralph</span>
+                <span role="cell">Jefferson</span>
+                <span role="cell">XYZ, Inc.</span>
+                <span role="cell">456 Main St.</span>
+              </div>
+              <div role="row">
+                <span role="cell">Nancy</span>
+                <span role="cell">Jensen</span>
+                <span role="cell">XYZ, Inc.</span>
+                <span role="cell">456 Main St.</span>
+              </div>
+            </div>
+          </div>
+          <hr />
+        </section>
+        <section class="section">
+          <div class="container">
+            <h3 id="aria-hidden-footer-table" class="title">
+              Table with aria-hidden footer
+            </h3>
+            <table
+              aria-labelledby="aria-hidden-footer-table"
+              class="data-table"
+              role="table"
+            >
+              <tr>
+                <th>ID</th>
+                <th>First Name</th>
+                <th>Last Name</th>
+              </tr>
+              <tr>
+                <td>1</td>
+                <td>Chris</td>
+                <td>Alpine</td>
+              </tr>
+              <tr>
+                <td>2</td>
+                <td>Harry</td>
+                <td>Trotter</td>
+              </tr>
+              <tfoot aria-hidden="true">
+                <tr>
+                  <th>ID</th>
+                  <th>First Name</th>
+                  <th>Last Name</th>
+                </tr>
+              </tfoot>
+            </table>
+          </div>
+          <hr />
+        </section>
+      </main>
+      <footer class="footer">
+        <div class="content has-text-centered">
+          <p>
+            blah
+            <strong>blah</strong>
+            blah
+            <strong>footer</strong>
+            with a
+            <a href="../index.html">link</a>
+            .
+          </p>
+        </div>
+      </footer>
+    </div>
+    <script>
+      /**
+       * Shadow DOM with table
+       */
+      const shadowRoot =
+        document.getElementById('shadow-root')
+      const shadow = shadowRoot.attachShadow({
+        mode: 'open'
+      })
+      shadow.innerHTML = `
+        <link
+          rel="stylesheet"
+          href="https://cdn.jsdelivr.net/npm/bulma@0.8.0/css/bulma.min.css"
+        />
+        <link
+          rel="stylesheet"
+          href="./table.css"
+        />
+        <table class="data-table">
+          <tbody>
+            <tr>
+              <td class="th">ID</td>
+              <th>First Name</th>
+              <th>Last Name</th>
+            </tr>
+            <tr>
+              <td>1</td>
+              <td>Chris</td>
+              <td>Alpine</td>
+            </tr>
+            <tr>
+              <td>2</td>
+              <td>Harry</td>
+              <td>Trotter</td>
+            </tr>
+          </tbody>
+        </table>
+      `
+    </script>
+  </body>
+</html>

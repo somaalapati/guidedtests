@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Focus-submits-form</title>
+  </head>
+
+  <body>
+    <div class="container">
+      <h2 class="modal-title">Simple Form</h2>
+    </div>
+    <div class="modal-body">
+      <form>
+        <p>
+          Form will be submitted automatically when the
+          keyboard focus moves to the "Send form data!"
+          Button
+        </p>
+        <label for="fname">First name:</label>
+        <input type="text" id="fname" name="fname" />
+        <br />
+        <br />
+        <label for="lname">Last name:</label>
+        <input type="text" id="lname" name="lname" />
+        <br />
+        <br />
+        <input
+          type="button"
+          id="myBtn"
+          value="Send form data!"
+          onclick="submit()"
+          onfocus="submit()"
+        />
+      </form>
+    </div>
+
+    <script>
+      function submit() {
+        document.getElementById('myBtn').submit()
+      }
+    </script>
+  </body>
+</html>

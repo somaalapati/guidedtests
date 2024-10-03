@@ -1,0 +1,77 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1.0"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/bulma@0.8.0/css/bulma.min.css"
+    />
+    <link
+      href="https://use.fontawesome.com/99d8f1b106.css"
+      media="all"
+      rel="stylesheet"
+    />
+    <title>Native Dialog Modal tool test page</title>
+    <link rel="stylesheet" href="./index.css" />
+  </head>
+
+  <body>
+    <div id="wrapper">
+      <header class="hero is-medium is-info is-bold">
+        <div class="hero-body">
+          <div class="container">
+            <h1 class="title">
+              Native Dialog Modal tool test page
+            </h1>
+            <a class="button" href="../index.html">
+              Go home
+            </a>
+          </div>
+        </div>
+      </header>
+      <main>
+        <section class="section">
+          <div class="container">
+            <button
+              onclick="document.getElementById('native-dialog').showModal()"
+            >
+              Show modal native dialog
+            </button>
+            <button
+              onclick="document.getElementById('native-dialog').show()"
+            >
+              Show non modal native dialog
+            </button>
+          </div>
+        </section>
+      </main>
+      <footer class="footer">
+        <div class="content has-text-centered">
+          <p>
+            blah
+            <strong>blah</strong>
+            blah
+            <strong>footer</strong>
+            with a
+            <a href="../index.html">link</a>
+            .
+          </p>
+        </div>
+      </footer>
+    </div>
+
+    <dialog
+      id="native-dialog"
+      aria-labelledby="native-title"
+    >
+      <h2 id="native-title">Native dialog</h2>
+      <form method="dialog">
+        <button>Close dialog</button>
+      </form>
+    </dialog>
+  </body>
+</html>

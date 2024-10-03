@@ -1,0 +1,81 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1.0"
+    />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/bulma@0.8.0/css/bulma.min.css"
+    />
+    <title>Nested COIF with Images</title>
+    <script src="../../utils/cross-origin-iframes.js"></script>
+  </head>
+  <body>
+    <main>
+      <section class="section">
+        <div class="container">
+          <h3>Nested Shadow DOM</h3>
+          <div id="top-shadow-root"></div>
+        </div>
+      </section>
+      <section class="section">
+        <div class="container">
+          <h3 class="title">Second Level</h3>
+          <div id="second-level-first-image"></div>
+        </div>
+        <hr />
+      </section>
+      <section class="section">
+        <div class="container">
+          <div id="third-level-coif"></div>
+        </div>
+      </section>
+    </main>
+    <script>
+      injectCrossOriginIframe(
+        '/images/bath.png',
+        document.getElementById('second-level-first-image'),
+        '30',
+        '30'
+      )
+      injectCrossOriginIframe(
+        '/cross-origin-iframe/nested/third-level-coif.html',
+        document.getElementById('third-level-coif'),
+        '1100',
+        '800'
+      )
+      const topShadowRoot = document.getElementById(
+        'top-shadow-root'
+      )
+      const shadowStyles = `
+        :host {
+          background-color: #394;
+          padding: 1em;
+        }
+
+        .color-contrast {
+          background-color: #f00;
+          border: 1px solid #a00;
+          color: pink;
+          padding: .5em 1em;
+          border-radius: 4px;
+        }
+      `
+
+      const shadow = topShadowRoot.attachShadow({
+        mode: 'open'
+      })
+      const style = document.createElement('style')
+      style.innerText = shadowStyles
+      shadow.innerHTML = `
+        <h2>Shadow Dom</h2>
+        <button class="color-contrast">Click Me</button>
+      `
+      shadow.appendChild(style)
+    </script>
+  </body>
+</html>

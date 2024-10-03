@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html lang="en-US">
+  <head>
+    <meta charset="UTF-8" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1.0"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/bulma@0.8.0/css/bulma.min.css"
+    />
+    <title>Custom Buttons Test Page</title>
+    <style>
+      [role='button'] {
+        padding: 2px;
+        background-color: navy;
+        color: white;
+        cursor: default;
+      }
+      details {
+        border: 1px solid #aaa;
+        border-radius: 4px;
+        padding: 0.5em 0.5em 0;
+      }
+      summary {
+        font-weight: bold;
+        margin: -0.5em -0.5em 0;
+        padding: 0.5em;
+      }
+    </style>
+  </head>
+  <body>
+    <div id="wrapper">
+      <header class="hero is-medium is-info is-bold">
+        <div class="hero-body">
+          <div class="container">
+            <h1 class="title">
+              Buttons and Links tool test page for custom
+              buttons
+            </h1>
+            <a class="button" href="../index.html">
+              Go home
+            </a>
+          </div>
+        </div>
+      </header>
+      <main>
+        <section class="section">
+          <div class="container">
+            <h4 class="title">
+              Below are buttons for testcase C6323
+            </h4>
+            <p>
+              Below is the button created with
+              span[role="button"] with text
+            </p>
+            <span role="button">Submit</span>
+            <p>
+              Below is the button craeted with
+              span[role="button"] with aria-label
+            </p>
+            <span
+              role="button"
+              aria-label="aria-label text"
+            ></span>
+            <p>
+              Below is the button created with
+              span[role="button"] with no text
+            </p>
+            <span role="button"><em></em></span>
+          </div>
+          <hr />
+        </section>
+        <section class="section">
+          <div class="container">
+            <h4 class="title">
+              Below are buttons for testcase C6324
+            </h4>
+            <p>Below is the summary element with text</p>
+            <details>
+              <summary>Details</summary>
+              Something small enough to escape casual
+              notice.
+            </details>
+            <p>
+              Below is the summary element with aria-label
+            </p>
+            <details>
+              <summary
+                aria-label="aria-label text"
+              ></summary>
+              Something small enough to escape casual
+              notice.
+            </details>
+          </div>
+          <hr />
+        </section>
+        <section class="section">
+          <div class="container">
+            <h4 class="title">
+              Below is the button for testcase C6325
+            </h4>
+            <p>
+              Below is the input[type="reset"] element
+              without text
+            </p>
+            <input type="reset" />
+          </div>
+          <hr />
+        </section>
+        <section class="section">
+          <div class="container">
+            <h4 class="title">
+              Below is the button for testcase C6326
+            </h4>
+            <p>Below is a disabled button with text</p>
+            <button disabled>Delete</button>
+            <p>Below is a disabled button without text</p>
+            <button disabled></button>
+            <p>
+              Below is a disabled button with aria-label
+            </p>
+            <button
+              disabled
+              aria-label="aria-label text"
+            ></button>
+            <p>Below is a disabled button with value</p>
+            <button disabled value="value text"></button>
+          </div>
+          <hr />
+        </section>
+        <section class="section">
+          <div class="container">
+            <h4 class="title">
+              Below is the button for testcase C6327
+            </h4>
+            <p>Below is a button with emoji as text</p>
+            <button data-href="../forms/index.html">
+              &#128540;
+            </button>
+          </div>
+          <hr />
+        </section>
+      </main>
+      <footer class="footer">
+        <div class="content has-text-centered">
+          <p>
+            blah
+            <strong>blah</strong>
+            blah
+            <strong>footer</strong>
+            with a
+            <a href="../index.html">link</a>
+            .
+          </p>
+        </div>
+      </footer>
+    </div>
+  </body>
+</html>

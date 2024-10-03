@@ -1,0 +1,301 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1.0"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/bulma@0.8.0/css/bulma.min.css"
+    />
+    <link
+      href="https://use.fontawesome.com/99d8f1b106.css"
+      media="all"
+      rel="stylesheet"
+    />
+    <style>
+      #css {
+        background-image: url('GoImage.png');
+        background-color: #cccccc;
+        background-repeat: no-repeat;
+        height: 200px;
+        width: 230px;
+      }
+    </style>
+
+    <title>Images tool test page</title>
+  </head>
+
+  <body>
+    <svg
+      style="display: none"
+      xmlns="http://www.w3.org/2000/svg"
+    >
+      <symbol
+        id="soccerball"
+        viewBox="-2500 -2500 5000 5000"
+      >
+        <g stroke="#000" stroke-width="24">
+          <circle fill="#fff" r="2376" />
+          <path
+            fill="none"
+            d="m-1643-1716 155 158m-550 2364c231 231 538 195 826 202m-524-2040c-491 351-610 1064-592 1060m1216-1008c-51 373 84 783 364 1220m-107-2289c157-157 466-267 873-329m-528 4112c-50 132-37 315-8 510m62-3883c282 32 792 74 1196 303m-404 2644c310 173 649 247 1060 180m-340-2008c-242 334-534 645-872 936m1109-2119c-111-207-296-375-499-534m1146 1281c100 3 197 44 290 141m-438 495c158 297 181 718 204 1140"
+          />
+        </g>
+        <path
+          fill="#000"
+          d="m-1624-1700c243-153 498-303 856-424 141 117 253 307 372 492-288 275-562 544-724 756-274-25-410-2-740-60 3-244 84-499 236-764zm2904-40c271 248 537 498 724 788-55 262-105 553-180 704-234-35-536-125-820-200-138-357-231-625-340-924 210-156 417-296 616-368zm-3273 3033a2376 2376 0 0 1-378-1392l59-7c54 342 124 674 311 928-36 179-2 323 51 458zm1197-1125c365 60 717 120 1060 180 106 333 120 667 156 1000-263 218-625 287-944 420-372-240-523-508-736-768 122-281 257-561 464-832zm3013 678a2376 2376 0 0 1-925 1147l-116-5c84-127 114-297 118-488 232-111 464-463 696-772 86 30 159 72 227 118zm-2287 1527a2376 2376 0 0 1-993-251c199 74 367 143 542 83 53 75 176 134 451 168z"
+        />
+      </symbol>
+    </svg>
+    <div id="wrapper">
+      <header class="hero is-medium is-info is-bold">
+        <div class="hero-body">
+          <div class="container">
+            <h1 class="title">Images tool test page</h1>
+            <a class="button" href="../index.html">
+              Go home
+            </a>
+            <a class="button" href="./no-images.html">
+              Go to no images page
+            </a>
+          </div>
+        </div>
+      </header>
+      <main>
+        <section class="section">
+          <div class="container">
+            <h3 class="title">Images</h3>
+            <p class="subtitle">
+              This section contains some images.
+            </p>
+            <div>
+              <h1>Image with valid Alt</h1>
+              <img
+                id="inf2"
+                alt="Accessibility image"
+                src="accessibility.jpg"
+                width="200"
+                height="200"
+              />
+              <h1>Image with invalid Alt</h1>
+              <img
+                id="inf2"
+                alt="@@@###***()"
+                src="accessibility.jpg"
+                width="200"
+                height="200"
+              />
+              <h1>Image with out Alt</h1>
+              <img
+                id="inf2"
+                src="knowledge.png"
+                width="200"
+                height="200"
+              />
+              <h1>Image with empty alt</h1>
+              <img
+                id="inf2"
+                alt=""
+                src="sample.gif"
+                width="200"
+                height="200"
+              />
+              <h1>Image with role="presentation"</h1>
+              <img
+                id="inf2"
+                role="presentation"
+                src="knowledge.png"
+                width="200"
+                height="200"
+              />
+              <h1>Image within an interactive element</h1>
+              <button aria-label="collapse">
+                <img
+                  src="angle-down.png"
+                  width="50"
+                  height="50"
+                  aria-hidden="true"
+                />
+              </button>
+              <h1>SVG with role="img" and aria-label</h1>
+              <svg
+                height="100"
+                width="100"
+                role="img"
+                aria-label="an svg soccerball"
+              >
+                <use href="#soccerball" />
+              </svg>
+              <h1>SVG with no role and empty label</h1>
+              <svg height="100" width="100" aria-label="">
+                <use href="#soccerball" />
+              </svg>
+              <h1>SVG with role="img" and no label</h1>
+              <svg height="100" width="100" role="img">
+                <use href="#soccerball" />
+              </svg>
+              <h1>SVG with role="img" and title</h1>
+              <svg height="100" width="100" role="img">
+                <title>an svg soccerball</title>
+                <use href="#soccerball" />
+              </svg>
+              <h1>
+                SVG with role="img" and title and
+                description
+              </h1>
+              <svg height="100" width="100" role="img">
+                <title>an svg soccerball</title>
+                <desc>
+                  a soccer with black pentagons and white
+                  hexagons
+                </desc>
+                <use href="#soccerball" />
+              </svg>
+              <h1>
+                SVG with role="img" and title and
+                &lt;text&gt;
+              </h1>
+              <svg
+                viewBox="0 0 105 30"
+                height="100"
+                width="240"
+                role="img"
+              >
+                <style>
+                  .text {
+                    font-size: 10px;
+                  }
+                </style>
+                <title>an svg soccerball</title>
+                <desc>
+                  a soccer with black pentagons and white
+                  hexagons
+                </desc>
+                <use x="-10" href="#soccerball"></use>
+                <text x="0" y="10" class="text">this</text>
+                <text x="5" y="20" class="text">is</text>
+                <text x="5" y="30" class="text">a</text>
+                <text x="70" y="15" class="text">
+                  soccer
+                </text>
+                <text x="70" y="25" class="text">ball</text>
+              </svg>
+              <h1>BMP image</h1>
+              <img
+                id="inf3"
+                alt="BMP image"
+                src="https://filesamples.com/samples/image/bmp/sample_1920%C3%971280.bmp"
+                width="100"
+                height="100"
+              />
+              <h1>Emoji with (role=image)</h1>
+              <div
+                role="img"
+                aria-label="Description of the image"
+                title="Image with (role=image)"
+              >
+                <p>&#x1F408; &#x1F602;</p>
+              </div>
+              <h1>CSS Image</h1>
+              <div id="css"></div>
+            </div>
+          </div>
+          <hr />
+        </section>
+        <section class="section">
+          <div class="container">
+            <h3 class="title">Hidden Images</h3>
+            <div id="hidden-images">
+              <h2>Image with hidden attribute</h2>
+              <p>
+                Note: Below image is hidden using
+                <code>hidden</code>
+                attribute. You cannot see the image
+              </p>
+              <img
+                id="inf1"
+                hidden
+                alt="PNG image"
+                src="https://png.pngtree.com/element_our/sm/20180327/sm_5aba147bcacf2.png"
+                width="100"
+                height="100"
+              />
+              <h2>Image with aria-hidden=true</h2>
+              <img
+                id="inf1"
+                aria-hidden="true"
+                alt="PNG image"
+                src="https://png.pngtree.com/element_our/sm/20180327/sm_5aba147bcacf2.png"
+                width="100"
+                height="100"
+              />
+              <h2>Image with display:none</h2>
+              <p>
+                Note: Below image is hidden using
+                <code>display:none</code>
+                . You cannot see the image
+              </p>
+              <img
+                id="inf2"
+                alt="JPG image"
+                src="http://images.all-free-download.com/images/graphicthumb/beautiful_scenery_05_hd_picture_166257.jpg"
+                width="100"
+                height="100"
+                style="display: none"
+              />
+            </div>
+          </div>
+        </section>
+        <section class="section">
+          <h2 class="title is-medium">iframe</h2>
+          <iframe
+            src="./frame1.html"
+            width="400"
+            height="400"
+          ></iframe>
+          <hr />
+        </section>
+        <section class="section">
+          <h2 class="title is-medium">shadow DOM (open)</h2>
+          <div id="shadow-root"></div>
+          <hr />
+        </section>
+      </main>
+      <footer class="footer">
+        <div class="content has-text-centered">
+          <p>
+            blah
+            <strong>blah</strong>
+            blah
+            <strong>footer</strong>
+            with a
+            <a href="../index.html">link</a>
+            .
+          </p>
+        </div>
+      </footer>
+      <script>
+        /**
+         * Shadow DOM Example
+         */
+        const shadowRoot =
+          document.getElementById('shadow-root')
+        const shadow = shadowRoot.attachShadow({
+          mode: 'open'
+        })
+        // create a shadow button
+        const shadowImage1 = document.createElement('img')
+        shadowImage1.src = 'angle-down.png'
+        // create another shadow button
+        const shadowImage2 = document.createElement('img')
+        shadowImage2.src = 'automobile.png'
+        // add the buttons to the shadow DOM
+        shadow.appendChild(shadowImage1)
+        shadow.appendChild(shadowImage2)
+      </script>
+    </div>
+  </body>
+</html>

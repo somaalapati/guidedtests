@@ -1,0 +1,33 @@
+/**
+* Layout Table
+*/
+.layout-table td {
+  padding: 20px;
+  font-size: 24px;
+  font-weight: bold;
+  border: 1px solid;
+}
+
+/**
+* Data Table
+*/
+.data-table th,
+.data-table .th,
+.data-table td,
+.data-table .td {
+  padding: 8px;
+  border: 1px solid black;
+  font-size: 16px;
+  min-width: 125px;
+}
+
+.data-table th,
+.data-table .th {
+  font-weight: bold;
+  color: white;
+  background-color: #444;
+}
+
+.fake-row {
+  display: flex;
+}

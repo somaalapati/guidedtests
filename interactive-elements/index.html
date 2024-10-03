@@ -1,0 +1,1074 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1.0"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/bulma@0.8.0/css/bulma.min.css"
+    />
+    <link
+      href="https://use.fontawesome.com/99d8f1b106.css"
+      media="all"
+      rel="stylesheet"
+    />
+    <title>interactive elements tool test page</title>
+    <style>
+      #button[aria-disabled='true'] {
+        color: #999;
+        border-color: transparent;
+        background: #dcd8d8;
+      }
+
+      #button[aria-expanded='true'] {
+        padding-bottom: 50px;
+      }
+
+      #button[aria-pressed='true'] {
+        box-shadow: inset 0 0 5px #000;
+      }
+
+      [role='checkbox'] {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        width: 30px;
+        height: 30px;
+        box-shadow: 0 0 0 2px #ccc;
+      }
+
+      [aria-disabled='true'] {
+        background: #ccc;
+      }
+
+      [role='checkbox']::before {
+        content: '';
+      }
+
+      [role='checkbox'][aria-checked='true']::before {
+        content: 'X';
+      }
+
+      [role='tab'] {
+        border: 3px solid #ccc;
+        border-bottom: 0;
+        display: inline-block;
+        padding: 0 5px;
+      }
+
+      [role='tab'][aria-selected='true'] {
+        border-color: teal;
+      }
+
+      ul {
+        padding: 1em 0;
+        border: 2px solid;
+        border-radius: 10px;
+      }
+
+      li {
+        padding: 10px;
+      }
+
+      li:nth-child(odd) {
+        background: #f2f2f2;
+      }
+
+      .collapsible {
+        background-color: #777;
+        color: white;
+        cursor: pointer;
+        padding: 18px;
+        width: 100%;
+        border: none;
+        text-align: left;
+        outline: none;
+        font-size: 15px;
+      }
+
+      .active,
+      .collapsible:hover {
+        background-color: #555;
+      }
+
+      .content {
+        padding: 0 18px;
+        display: none;
+        overflow: hidden;
+        background-color: #f1f1f1;
+      }
+
+      .w3-container.w3-border.city {
+        background-color: #edeade;
+        width: 300px;
+      }
+
+      /* Styles for the checkbox group */
+      .group-checkbox {
+        font-weight: bold;
+      }
+
+      .tab-content {
+        padding: 3%;
+      }
+    </style>
+  </head>
+
+  <body>
+    <div id="wrapper">
+      <header class="hero is-medium is-info is-bold">
+        <div class="hero-body">
+          <div class="container">
+            <h1 class="title">
+              Interactive Elements IGT test page
+            </h1>
+            <a class="button" href="../index.html">
+              Go home
+            </a>
+          </div>
+        </div>
+      </header>
+      <main>
+        <section class="section">
+          <h2 class="subtitle">
+            Dynamic states and stuff...
+          </h2>
+          <div class="container">
+            <button id="button">Button</button>
+            <div role="group">
+              <label>
+                <input
+                  type="checkbox"
+                  id="disabled-button"
+                />
+                Disabled
+              </label>
+              <label>
+                <input
+                  type="checkbox"
+                  id="expanded-button"
+                />
+                Expanded
+              </label>
+              <label>
+                <input
+                  type="checkbox"
+                  id="pressed-button"
+                />
+                Pressed
+              </label>
+            </div>
+          </div>
+          <hr />
+        </section>
+
+        <section class="section">
+          <div class="container">
+            <div
+              id="checkbox"
+              role="checkbox"
+              aria-label="checkboxx"
+            ></div>
+            <div role="group">
+              <label>
+                <input
+                  type="checkbox"
+                  id="disabled-checkbox"
+                />
+                Disabled
+              </label>
+              <label>
+                <input
+                  type="checkbox"
+                  id="checked-checkbox"
+                />
+                Checked
+              </label>
+            </div>
+          </div>
+          <hr />
+        </section>
+
+        <section class="section">
+          <div class="container">
+            <div id="tab" role="tab" tabindex="0">tab</div>
+            <div role="group">
+              <label>
+                <input type="checkbox" id="disabled-tab" />
+                Disabled
+              </label>
+              <label>
+                <input type="checkbox" id="selected-tab" />
+                Selected
+              </label>
+            </div>
+          </div>
+          <hr />
+        </section>
+
+        <section class="section">
+          <div class="container">
+            <h2 class="subtitle">
+              All of the below elements should be picked up
+              by tool
+            </h2>
+            <ul>
+              <li>
+                <a href="#">anchor</a>
+              </li>
+              <li>
+                <input type="button" value="input button" />
+              </li>
+              <li>
+                <input
+                  type="submit"
+                  value="submit button"
+                />
+              </li>
+              <li>
+                <input type="reset" value="input reset" />
+              </li>
+              <li>
+                <details>
+                  <summary>summary</summary>
+                  details
+                </details>
+              </li>
+              <li>
+                <div role="button">role button</div>
+              </li>
+              <li>
+                <select aria-label="select list">
+                  <option>select list</option>
+                  <option>other option</option>
+                </select>
+              </li>
+              <li>
+                <textarea aria-label="textarea"></textarea>
+              </li>
+              <li>
+                <div role="combobox" aria-label="combobox">
+                  combobox
+                </div>
+              </li>
+              <li>
+                <div role="listbox" aria-label="listbox">
+                  listbox
+                </div>
+              </li>
+              <li>
+                <div role="option" aria-label="option">
+                  option
+                </div>
+              </li>
+              <li>
+                <div role="radio" aria-label="radio">
+                  radio (role)
+                </div>
+              </li>
+              <li>
+                <label>
+                  <input type="radio" checked />
+                  radio (native)
+                </label>
+              </li>
+              <li>
+                <label>
+                  <input type="radio" />
+                  radio (native unchecked)
+                </label>
+              </li>
+              <li>
+                <div role="checkbox" aria-label="checkbox">
+                  checkbox
+                </div>
+              </li>
+              <li>
+                <div role="textbox" aria-label="textbox">
+                  textbox
+                </div>
+              </li>
+              <li>
+                <div role="slider" aria-label="slider">
+                  slider
+                </div>
+              </li>
+              <li>
+                <div
+                  role="spinbutton"
+                  aria-label="spinbutton"
+                >
+                  spinbutton
+                </div>
+              </li>
+              <li>
+                <div tabindex="0">
+                  naturally focusable div
+                </div>
+              </li>
+              <li>
+                <div role="gridcell" aria-label="gridcell">
+                  gridcell
+                </div>
+              </li>
+              <li>
+                <div role="menuitem" aria-label="menuitem">
+                  menuitem
+                </div>
+              </li>
+              <li>
+                <div
+                  role="menuitemcheckbox"
+                  aria-label="menuitemcheckbox"
+                >
+                  menuitemcheckbox
+                </div>
+              </li>
+              <li>
+                <div
+                  role="menuitemradio"
+                  aria-label="menuitemradio"
+                >
+                  menuitemradio
+                </div>
+              </li>
+              <li>
+                <div
+                  role="scrollbar"
+                  aria-label="scrollbar"
+                >
+                  scrollbar
+                </div>
+              </li>
+              <li>
+                <div
+                  role="searchbox"
+                  aria-label="searchbox"
+                >
+                  searchbox
+                </div>
+              </li>
+              <li>
+                <div role="switch" aria-label="switch">
+                  switch
+                </div>
+              </li>
+              <li>
+                <div role="treeitem" aria-label="treeitem">
+                  treeitem
+                </div>
+              </li>
+            </ul>
+          </div>
+          <hr />
+          <h2 class="subtitle">
+            Shadow / iframe interactive elements
+          </h2>
+          <div id="shadow_root"></div>
+          <iframe
+            src="/interactive-elements/frame.html"
+            title="foo"
+          ></iframe>
+        </section>
+        <hr />
+        <section class="section">
+          <div class="container">
+            <h2 class="subtitle">aria-expanded</h2>
+
+            <button
+              type="button"
+              class="collapsible"
+              id="correct-state"
+              aria-expanded="false"
+            >
+              Expand-collapse with correct aria-expanded
+              attribute
+            </button>
+            <div class="content">
+              <p>
+                Lorem ipsum dolor sit amet, consectetur
+                adipisicing elit, sed do eiusmod tempor
+                incididunt ut labore et dolore magna aliqua.
+                Ut enim ad minim veniam, quis nostrud
+                exercitation ullamco laboris nisi ut aliquip
+                ex ea commodo consequat.
+              </p>
+            </div>
+            <button
+              type="button"
+              class="collapsible"
+              id="incorrect-state"
+              aria-expanded="true"
+            >
+              Expand-collapse with incorrect aria-expanded
+              attribute
+            </button>
+            <div class="content">
+              <p>
+                Lorem ipsum dolor sit amet, consectetur
+                adipisicing elit, sed do eiusmod tempor
+                incididunt ut labore et dolore magna aliqua.
+                Ut enim ad minim veniam, quis nostrud
+                exercitation ullamco laboris nisi ut aliquip
+                ex ea commodo consequat.
+              </p>
+            </div>
+            <button type="button" class="collapsible">
+              Expand-collapse without any aria-expanded
+              attribute
+            </button>
+            <div class="content">
+              <p>
+                Lorem ipsum dolor sit amet, consectetur
+                adipisicing elit, sed do eiusmod tempor
+                incididunt ut labore et dolore magna aliqua.
+                Ut enim ad minim veniam, quis nostrud
+                exercitation ullamco laboris nisi ut aliquip
+                ex ea commodo consequat.
+              </p>
+            </div>
+            <hr />
+            <h2>Normal buttons with aria-expanded</h2>
+            <button type="button" aria-expanded="false">
+              Normal button with aria-expanded="false"
+            </button>
+            <button type="button" aria-expanded="true">
+              Normal button with aria-expanded="true"
+            </button>
+          </div>
+        </section>
+        <section class="section">
+          <div class="container">
+            <div class="w3-container">
+              <hr />
+              <div class="subtitle">aria-selected</div>
+
+              <h2>Tabs with correct aria-selected state</h2>
+
+              <div class="w3-bar w3-black">
+                <button
+                  class="w3-bar-item w3-button tablink w3-red"
+                  onclick="openCity(event,'London')"
+                  aria-selected="true"
+                  style="color: blue"
+                >
+                  London
+                </button>
+                <button
+                  class="w3-bar-item w3-button tablink"
+                  onclick="openCity(event,'Paris')"
+                  aria-selected="false"
+                  style="color: red"
+                >
+                  Paris
+                </button>
+                <button
+                  class="w3-bar-item w3-button tablink"
+                  onclick="openCity(event,'Tokyo')"
+                  aria-selected="false"
+                  style="color: red"
+                >
+                  Tokyo
+                </button>
+              </div>
+
+              <div
+                id="London"
+                class="w3-container w3-border city"
+              >
+                <p class="tab-content">
+                  &emsp; London is the capital city of
+                  England.
+                </p>
+              </div>
+
+              <div
+                id="Paris"
+                class="w3-container w3-border city"
+                style="display: none"
+              >
+                <p class="tab-content">
+                  &emsp; Paris is the capital of France.
+                </p>
+              </div>
+
+              <div
+                id="Tokyo"
+                class="w3-container w3-border city"
+                style="display: none"
+              >
+                <p class="tab-content">
+                  &emsp; Tokyo is the capital of Japan.
+                </p>
+              </div>
+            </div>
+
+            <input
+              style="padding: 20px"
+              type="checkbox"
+              name="change-states"
+              id="change-selected-state"
+            />
+
+            <label for="change-selected-state">
+              Check this checkbox to apply incorrect
+              aria-selected states
+            </label>
+            <hr />
+            <h2>Normal Buttons with aria-selected</h2>
+            <button type="button" aria-selected="true">
+              Normal button with aria-selected="true"
+            </button>
+            <button type="button" aria-selected="false">
+              Normal button with aria-selected="false"
+            </button>
+          </div>
+        </section>
+        <section class="section">
+          <div class="container">
+            <h2 class="subtitle">aria-checked</h2>
+            <div>
+              <!-- Checkbox group label -->
+              <label
+                for="group-checkbox"
+                class="group-checkbox"
+                aria-checked="false"
+              >
+                Checkbox Group
+              </label>
+              <!-- Group checkbox -->
+              <input
+                type="checkbox"
+                id="group-checkbox"
+                onclick="handleGroupCheckboxClick(this)"
+                aria-checked="false"
+                aria-controls="checkbox-group"
+              />
+
+              <!-- Individual checkboxes within the group -->
+              <div id="checkbox-group">
+                <label
+                  for="cb1"
+                  class="individual-checkbox"
+                >
+                  <input
+                    type="checkbox"
+                    id="cb1"
+                    onclick="handleIndividualCheckboxClick(this)"
+                    aria-checked="false"
+                  />
+                  Option 1
+                </label>
+                <label
+                  for="cb2"
+                  class="individual-checkbox"
+                >
+                  <input
+                    type="checkbox"
+                    id="cb2"
+                    onclick="handleIndividualCheckboxClick(this)"
+                    aria-checked="false"
+                  />
+                  Option 2
+                </label>
+                <label
+                  for="cb3"
+                  class="individual-checkbox"
+                >
+                  <input
+                    type="checkbox"
+                    id="cb3"
+                    onclick="handleIndividualCheckboxClick(this)"
+                    aria-checked="false"
+                  />
+                  Option 3
+                </label>
+              </div>
+            </div>
+            <ul>
+              <li>
+                Selecting at least one option in the
+                checkbox group sets
+                <code>aria-checked="mixed"</code>
+                for the checkbox group
+              </li>
+              <li>
+                Selecting all options in the checkbox group
+                sets
+                <code>aria-checked="true"</code>
+                for the checkbox group
+              </li>
+              <li>
+                Not selecting any options in the checkbox
+                group sets
+                <code>aria-checked="false"</code>
+                for the checkbox group
+              </li>
+            </ul>
+            <input
+              type="checkbox"
+              name="change-states"
+              id="change-checked-state"
+            />
+            <label for="change-checked-state">
+              Check this checkbox to apply incorrect
+              aria-checked states for above checkboxes
+            </label>
+            <hr />
+            <h2>
+              Checkboxes without any aria-checked states
+            </h2>
+            <label for="cb4">
+              <input type="checkbox" id="cb4" checked />
+              checkbox with HTML checked
+            </label>
+            <label for="cb5">
+              <input type="checkbox" id="cb5" />
+              checkbox without HTML checked
+            </label>
+            <hr />
+            <h2>Normal buttons with aria-checked</h2>
+            <button type="button" aria-checked="false">
+              Normal button with aria-checked="false"
+            </button>
+            <button type="button" aria-checked="true">
+              Normal button with aria-checked="true"
+            </button>
+            <button type="button" aria-checked="mixed">
+              Normal button with aria-checked="mixed"
+            </button>
+          </div>
+        </section>
+        <hr />
+        <section class="section">
+          <div class="container">
+            <h2 class="subtitle">read-only</h2>
+            <form>
+              <div>
+                <label for="fname">
+                  First name:(HTML readonly)
+                </label>
+                <input
+                  type="text"
+                  id="fname"
+                  name="fname"
+                  readonly
+                />
+              </div>
+              <div>
+                <label for="lname">
+                  Last name:(Editable field)
+                </label>
+
+                <input
+                  type="text"
+                  id="lname"
+                  name="lname"
+                />
+              </div>
+              <div>
+                <label for="country">
+                  Country:(aria-readonly="false")
+                </label>
+                <input
+                  type="text"
+                  id="country"
+                  name="country"
+                  aria-readonly="false"
+                />
+              </div>
+              <div>
+                <label for="email">
+                  E-Mail:(aria-readonly="true" for normal
+                  field)
+                </label>
+                <input
+                  type="email"
+                  id="email"
+                  name="email"
+                  aria-readonly="true"
+                />
+              </div>
+              <div>
+                <label for="hobbies">
+                  Hobbies:(aria-readonly="true")
+                </label>
+                <textarea
+                  name="hobbies"
+                  aria-readonly="true"
+                  maxlength="0"
+                ></textarea>
+              </div>
+            </form>
+          </div>
+        </section>
+        <hr />
+        <section class="section">
+          <div class="container">
+            <h2 class="subtitle">area</h2>
+            <img
+              src="../aria-modal/maxresdefault.jpg"
+              alt="area img"
+              usemap="#workmap"
+              width="1280"
+              height="720"
+            />
+
+            <map name="workmap">
+              <area
+                shape="rect"
+                coords="34,44,270,350"
+                alt="Computer"
+                href="frame.html"
+              />
+              <area
+                shape="rect"
+                coords="290,172,333,250"
+                alt="Phone"
+                href="gridcells.html"
+              />
+              <area
+                shape="circle"
+                coords="337,300,44"
+                alt="Cup of coffee"
+                href="ml.html"
+              />
+            </map>
+          </div>
+        </section>
+      </main>
+      <footer class="footer">
+        <div class="content has-text-centered">
+          <p>
+            blah
+            <strong>blah</strong>
+            blah
+            <strong>footer</strong>
+          </p>
+        </div>
+      </footer>
+    </div>
+    <script>
+      /**
+       * Shadow DOM with a button
+       */
+      const shadowRoot =
+        document.getElementById('shadow_root')
+      const shadow = shadowRoot.attachShadow({
+        mode: 'open'
+      })
+      const shadowButton = document.createElement('button')
+      shadowButton.innerHTML = 'Shadow button'
+      shadow.append(shadowButton)
+
+      /**
+       * Form controls to manipulate states of the button and custom checkbox
+       */
+
+      const button = document.querySelector('#button')
+      const buttonDisableToggle = document.querySelector(
+        '#disabled-button'
+      )
+      const buttonExpandToggle = document.querySelector(
+        '#expanded-button'
+      )
+      const buttonPressToggle = document.querySelector(
+        '#pressed-button'
+      )
+
+      buttonDisableToggle.addEventListener('change', e => {
+        button.setAttribute(
+          'aria-disabled',
+          `${e.target.checked}`
+        )
+      })
+
+      buttonExpandToggle.addEventListener('change', e => {
+        button.setAttribute(
+          'aria-expanded',
+          `${e.target.checked}`
+        )
+      })
+
+      buttonPressToggle.addEventListener('change', e => {
+        button.setAttribute(
+          'aria-pressed',
+          `${e.target.checked}`
+        )
+      })
+
+      const checkbox = document.querySelector('#checkbox')
+      const checkboxDisableToggle = document.querySelector(
+        '#disabled-checkbox'
+      )
+      const checkboxCheckToggle = document.querySelector(
+        '#checked-checkbox'
+      )
+
+      checkboxDisableToggle.addEventListener(
+        'change',
+        e => {
+          checkbox.setAttribute(
+            'aria-disabled',
+            `${e.target.checked}`
+          )
+        }
+      )
+
+      checkboxCheckToggle.addEventListener('change', e => {
+        checkbox.setAttribute(
+          'aria-checked',
+          `${e.target.checked}`
+        )
+      })
+
+      const tab = document.querySelector('#tab')
+      const tabDisableToggle =
+        document.querySelector('#disabled-tab')
+      const tabSelectToggle =
+        document.querySelector('#selected-tab')
+
+      tabDisableToggle.addEventListener('change', e => {
+        tab.setAttribute(
+          'aria-disabled',
+          `${e.target.checked}`
+        )
+      })
+      tabSelectToggle.addEventListener('change', e => {
+        tab.setAttribute(
+          'aria-selected',
+          `${e.target.checked}`
+        )
+      })
+      //Logic related to aria-collpased
+      let collapsible =
+        document.getElementsByClassName('collapsible')
+
+      for (let i = 0; i < collapsible.length; i++) {
+        collapsible[i].addEventListener(
+          'click',
+          function () {
+            this.classList.toggle('active')
+            const content = this.nextElementSibling
+            if (content.style.display === 'block') {
+              content.style.display = 'none'
+            } else {
+              content.style.display = 'block'
+            }
+            if (this.getAttribute('aria-expanded')) {
+              let isAriaExpand =
+                this.getAttribute('aria-expanded') ===
+                'true'
+              this.setAttribute(
+                'aria-expanded',
+                isAriaExpand ? 'false' : 'true'
+              )
+            }
+          }
+        )
+      }
+      //Logic related to aria-selected
+      let incorrectAriaSelectedState = false
+      document
+        .getElementById('change-selected-state')
+        .addEventListener('change', event => {
+          incorrectAriaSelectedState = event.target.checked
+          let tabLinks =
+            document.getElementsByClassName('tablink')
+          for (let i = 0; i < tabLinks.length; i++) {
+            let ariaSelected =
+              tabLinks[i].getAttribute('aria-selected') ===
+              'true'
+            tabLinks[i].setAttribute(
+              'aria-selected',
+              ariaSelected ? 'false' : 'true'
+            )
+          }
+        })
+      function openCity(evt, cityName) {
+        let tablinks, city
+        city = document.getElementsByClassName('city')
+        for (let i = 0; i < city.length; i++) {
+          city[i].style.display = 'none'
+        }
+        tablinks =
+          document.getElementsByClassName('tablink')
+        for (let i = 0; i < city.length; i++) {
+          tablinks[i].className = tablinks[
+            i
+          ].className.replace(' w3-red', '')
+          tablinks[i].setAttribute(
+            'aria-selected',
+            incorrectAriaSelectedState ? 'true' : 'false'
+          )
+          tablinks[i].style.color = 'red'
+        }
+        document.getElementById(cityName).style.display =
+          'block'
+        evt.currentTarget.className += ' w3-red'
+        evt.currentTarget.setAttribute(
+          'aria-selected',
+          incorrectAriaSelectedState ? 'false' : 'true'
+        )
+        evt.currentTarget.style.color = 'blue'
+      }
+
+      //logic related to aria-checked
+      let incorrectCheckedState = false
+      document
+        .getElementById('change-checked-state')
+        .addEventListener('change', event => {
+          incorrectCheckedState = event.target.checked
+          const checkboxGroup = document.getElementById(
+            'checkbox-group'
+          )
+          const individualCheckboxes =
+            checkboxGroup.getElementsByTagName('input')
+          const groupCheckbox = document.getElementById(
+            'group-checkbox'
+          )
+          for (
+            let i = 0;
+            i < individualCheckboxes.length;
+            i++
+          ) {
+            let ariaChecked =
+              individualCheckboxes[i].getAttribute(
+                'aria-checked'
+              ) === 'true'
+            individualCheckboxes[i].setAttribute(
+              'aria-checked',
+              ariaChecked ? 'false' : 'true'
+            )
+          }
+          let groupAriaChecked =
+            groupCheckbox.getAttribute('aria-checked')
+          if (groupAriaChecked === 'true') {
+            groupCheckbox.setAttribute(
+              'aria-checked',
+              'false'
+            )
+          } else if (groupAriaChecked === 'false') {
+            groupCheckbox.setAttribute(
+              'aria-checked',
+              'mixed'
+            )
+          } else {
+            groupCheckbox.setAttribute(
+              'aria-checked',
+              'true'
+            )
+          }
+        })
+
+      // function to handle group checkbox click
+      function handleGroupCheckboxClick(checkbox) {
+        const checkboxGroup = document.getElementById(
+          'checkbox-group'
+        )
+        const individualCheckboxes =
+          checkboxGroup.getElementsByTagName('input')
+        const groupCheckbox = document.getElementById(
+          'group-checkbox'
+        )
+
+        if (checkbox.checked) {
+          // if the group checkbox is checked, check all individual checkboxes
+          for (
+            let i = 0;
+            i < individualCheckboxes.length;
+            i++
+          ) {
+            individualCheckboxes[i].checked = true
+            individualCheckboxes[i].setAttribute(
+              'aria-checked',
+              incorrectCheckedState ? 'false' : 'true'
+            )
+          }
+          groupCheckbox.setAttribute('aria-checked', 'true')
+        } else {
+          // if the group checkbox is unchecked, uncheck all individual checkboxes
+          for (
+            let i = 0;
+            i < individualCheckboxes.length;
+            i++
+          ) {
+            individualCheckboxes[i].checked = false
+            individualCheckboxes[i].setAttribute(
+              'aria-checked',
+              incorrectCheckedState ? 'true' : 'false'
+            )
+          }
+          groupCheckbox.setAttribute(
+            'aria-checked',
+            incorrectCheckedState ? 'true' : 'false'
+          )
+        }
+      }
+
+      // function to handle individual checkbox click
+      function handleIndividualCheckboxClick(checkbox) {
+        const checkboxGroup = document.getElementById(
+          'checkbox-group'
+        )
+        const individualCheckboxes =
+          checkboxGroup.getElementsByTagName('input')
+        const groupCheckbox = document.getElementById(
+          'group-checkbox'
+        )
+        let checkedCount = 0
+
+        if (checkbox.checked) {
+          checkbox.setAttribute(
+            'aria-checked',
+            incorrectCheckedState ? 'false' : 'true'
+          )
+        } else {
+          checkbox.setAttribute(
+            'aria-checked',
+            incorrectCheckedState ? 'true' : 'false'
+          )
+        }
+
+        // update the group checkbox based on the number of individual checkboxes that are checked
+        for (
+          let i = 0;
+          i < individualCheckboxes.length;
+          i++
+        ) {
+          if (individualCheckboxes[i].checked) {
+            checkedCount++
+          }
+        }
+
+        if (checkedCount === 0) {
+          // if no individual checkboxes are checked, set the group checkbox to false
+          groupCheckbox.checked = false
+          groupCheckbox.setAttribute(
+            'aria-checked',
+            incorrectCheckedState ? 'true' : 'false'
+          )
+        } else if (
+          checkedCount === individualCheckboxes.length
+        ) {
+          // if all individual checkboxes are checked, set the group checkbox to true
+          groupCheckbox.checked = true
+          groupCheckbox.setAttribute(
+            'aria-checked',
+            incorrectCheckedState ? 'false' : 'true'
+          )
+        } else {
+          // if some individual checkboxes are checked, set the group checkbox to mixed
+          groupCheckbox.checked = false
+          groupCheckbox.setAttribute(
+            'aria-checked',
+            incorrectCheckedState ? 'true' : 'mixed'
+          )
+        }
+      }
+    </script>
+  </body>
+</html>

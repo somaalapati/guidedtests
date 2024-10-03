@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1.0"
+    />
+    <title>gridcells interactive elements fixture</title>
+    <style>
+      [role='grid'] {
+        border: 2px solid;
+        width: 100%;
+        max-width: 500px;
+        margin: 0 auto;
+      }
+
+      [role='gridcell'] {
+        padding: 1em;
+        border: 1px solid;
+      }
+    </style>
+  </head>
+  <body>
+    <div role="grid">
+      <div role="row">
+        <div role="gridcell" tabindex="0">
+          Focusable gridcell with 0 interactive children
+        </div>
+      </div>
+      <div role="row">
+        <div role="gridcell">
+          <a href="#">
+            Non-focusable gridcell with interactive children
+          </a>
+        </div>
+      </div>
+    </div>
+  </body>
+</html>

@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+  ​
+
+  <head>
+    <meta charset="UTF-8" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1.0"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/bulma@0.8.0/css/bulma.min.css"
+    />
+    <link
+      href="https://use.fontawesome.com/99d8f1b106.css"
+      media="all"
+      rel="stylesheet"
+    />
+    <title>ARIA Modal tool test page</title>
+    <link rel="stylesheet" href="./index.css" />
+    <script>
+      class CustomButton extends HTMLElement {
+        constructor() {
+          super()
+          this.attachShadow({ mode: 'open' })
+          const button = document.createElement('button')
+          const slot = document.createElement('slot')
+          button.appendChild(slot)
+          this.shadowRoot.append(button)
+        }
+      }
+      customElements.define('custom-button', CustomButton)
+    </script>
+  </head>
+  ​
+
+  <body>
+    <div id="wrapper">
+      <template>
+        <div class="modal-dialog" tabindex="-1">
+          <h2>Hello world!</h2>
+          <button
+            class="modal-close"
+            aria-label="close"
+            data-trigger="modal-close"
+          ></button>
+          <p>
+            I have some shadow dom interactive elements!
+          </p>
+          <custom-button>one</custom-button>
+          <custom-button>two</custom-button>
+          <form id="form" action="#"></form>
+        </div>
+      </template>
+      <button data-trigger="modal-open">
+        Trigger modal!
+      </button>
+    </div>
+    <script src="./dynamic-modal.js"></script>
+    ​
+  </body>
+  ​
+</html>

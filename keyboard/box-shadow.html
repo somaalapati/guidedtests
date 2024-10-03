@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1.0"
+    />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>Box-shadow Styles (keyboard tool testing)</title>
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/bulma@0.8.0/css/bulma.min.css"
+    />
+  </head>
+  <body>
+    <h1>Box-shadow Styles</h1>
+    <script>
+      const colors = ['#f92089', '#ccc', '#000']
+      // box-shadow changes
+      const insets = ['', 'inset']
+      const offsets = [
+        '-3px -3px',
+        '-1px -1px',
+        '0px 0px',
+        '1px 1px',
+        '3px 3px'
+      ]
+      const blurs = ['0px', '1px', '3px']
+      const spreads = ['0px', '1px', '3px']
+
+      let [list, sheet] = createList(
+        'shadow-styles',
+        '#shadow-styles a {outline: none;}'
+      )
+      sheet.insertRule(`#shadow-styles a {padding: 0 3px;}`) // allows for inset shadows to not overlay the text
+      let ruleCount = 1
+      for (let product of cartesian(
+        insets,
+        colors,
+        offsets,
+        blurs,
+        spreads
+      )) {
+        const [inset, color, offset, blur, spread] = product
+        const rule = `box-shadow: ${[
+          inset,
+          color,
+          offset,
+          blur,
+          spread
+        ].join(' ')};`
+        list.insertAdjacentHTML(
+          'beforeend',
+          `<li><a href="#" id="shadow-styles-${ruleCount}">${product.join(
+            ' '
+          )}</a>${'&nbsp;'.repeat(
+            10
+          )}<span id="shadow-styles-${ruleCount}-focus">${product.join(
+            ' '
+          )}</span></li>`
+        )
+        sheet.insertRule(
+          `#shadow-styles-${ruleCount}:focus {${rule}}`
+        )
+        sheet.insertRule(
+          `#shadow-styles-${ruleCount}-focus {${rule}}`
+        )
+        ruleCount++
+      }
+      function createList(id, css = '') {
+        const styleElm = document.createElement('style')
+        document.body.appendChild(styleElm)
+        styleElm.textContent = `
+  #${id} {list-style: none;counter-reset: ${id}-counter;padding: 1em;}
+  #${id} li {counter-increment: ${id}-counter;}
+  #${id} li::before {content: counter(${id}-counter) ". ";color: black;}
+  ${css}`
+        const ol = document.createElement('ol')
+        ol.id = id
+        document.body.appendChild(ol)
+        const { sheet } = styleElm
+        return [ol, sheet]
+      }
+      // Generate all combinations of array elements:
+      function* cartesian(head, ...tail) {
+        let remainder = tail.length
+          ? cartesian(...tail)
+          : [[]]
+        for (let r of remainder) {
+          for (let h of head) {
+            yield [h, ...r]
+          }
+        }
+      }
+    </script>
+  </body>
+</html>

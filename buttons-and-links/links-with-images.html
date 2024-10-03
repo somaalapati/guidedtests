@@ -1,0 +1,389 @@
+<!DOCTYPE html>
+<html lang="en-US">
+  <head>
+    <meta charset="UTF-8" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1.0"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/bulma@0.8.0/css/bulma.min.css"
+    />
+    <title>Image links page</title>
+  </head>
+  <body>
+    <div id="wrapper">
+      <header class="hero is-medium is-info is-bold">
+        <div class="hero-body">
+          <div class="container">
+            <h1 class="title">
+              Buttons and Links tool test page for image
+              links
+            </h1>
+            <a class="button" href="../index.html">
+              Go home
+            </a>
+          </div>
+        </div>
+      </header>
+      <main>
+        <section class="section">
+          <div class="container">
+            <h4 class="title">
+              Below are links for testcase C6314
+            </h4>
+            <p>
+              Below is the link
+              <em>
+                with image which contains valid alt text
+              </em>
+            </p>
+            <a href="../images/frame1.html">
+              <img
+                id="img1"
+                alt="valid alt text"
+                src="../images/Accessibility.jpg"
+                width="50"
+                height="50"
+              />
+            </a>
+            <p>
+              Below is the link
+              <em>with image without alt text</em>
+            </p>
+            <a href="../images/frame1.html">
+              <img
+                id="img2"
+                src="../images/Accessibility.jpg"
+                width="50"
+                height="50"
+              />
+            </a>
+            <p>
+              Below is the link
+              <em>with image with invalid alt text</em>
+            </p>
+            <a href="../images/frame1.html">
+              <img
+                id="img3"
+                alt="invalid alt text"
+                src="../images/Accessibility.jpg"
+                width="50"
+                height="50"
+              />
+            </a>
+            <p>
+              Below is the link
+              <em>with image with empty alt text</em>
+            </p>
+            <a href="../images/frame1.html">
+              <img
+                id="img4"
+                alt=""
+                src="../images/Accessibility.jpg"
+                width="50"
+                height="50"
+              />
+            </a>
+            <p>
+              Below is the link
+              <em>with image with alt text + title</em>
+            </p>
+            <a href="../images/frame1.html">
+              <img
+                id="img5"
+                alt="alt text"
+                title="title text"
+                src="../images/Accessibility.jpg"
+                width="50"
+                height="50"
+              />
+            </a>
+          </div>
+          <hr />
+        </section>
+        <section class="section">
+          <div class="container">
+            <h4 class="title">
+              Below are Links for testcase C6315
+            </h4>
+            <p>
+              Below is the link
+              <em>
+                with image which contains valid aria-label
+              </em>
+            </p>
+            <a href="../images/frame1.html">
+              <img
+                id="img6"
+                aria-label="aria-label text"
+                src="../images/Accessibility.jpg"
+                width="50"
+                height="50"
+              />
+            </a>
+            <p>
+              Below is the link
+              <em>with image with empty aria-label</em>
+            </p>
+            <a href="../images/frame1.html">
+              <img
+                id="img7"
+                aria-label=""
+                src="../images/Accessibility.jpg"
+                width="50"
+                height="50"
+              />
+            </a>
+            <p>
+              Below is the link
+              <em>with image with invalid aria-label</em>
+            </p>
+            <a href="../images/frame1.html">
+              <img
+                id="img8"
+                aria-label="invalid aria-label text"
+                src="../images/Accessibility.jpg"
+                width="50"
+                height="50"
+              />
+            </a>
+          </div>
+          <hr />
+        </section>
+        <section class="section">
+          <div class="container">
+            <h4 class="title">
+              Below are Links for testcase C6316
+            </h4>
+            <p>
+              Below is the link
+              <em>with image with title</em>
+            </p>
+            <a href="../images/frame1.html">
+              <img
+                id="img9"
+                title="title text"
+                src="../images/Accessibility.jpg"
+                width="50"
+                height="50"
+              />
+            </a>
+            <p>
+              Below is the link
+              <em>with image with empty title</em>
+            </p>
+            <a href="../images/frame1.html">
+              <img
+                id="img10"
+                title=""
+                src="../images/Accessibility.jpg"
+                width="50"
+                height="50"
+              />
+            </a>
+            <p>
+              Below is the link
+              <em>with image with invalid title</em>
+            </p>
+            <a href="../images/frame1.html">
+              <img
+                id="img11"
+                title="invalid title"
+                src="../images/Accessibility.jpg"
+                width="50"
+                height="50"
+              />
+            </a>
+          </div>
+          <hr />
+        </section>
+        <section class="section">
+          <div class="container">
+            <h4 class="title">
+              Below are Links for testcase C6317
+            </h4>
+            <div id="link_element1">
+              aria-labelledby text
+            </div>
+            <p>
+              Below is the link with image with valid
+              <em>aria-labelledby</em>
+            </p>
+            <a href="../lists/index.html">
+              <img
+                id="img12"
+                aria-labelledby="link_element1"
+                src="../images/Accessibility.jpg"
+                width="50"
+                height="50"
+              />
+            </a>
+            <div id="link_element2">
+              aria-labelledby text
+            </div>
+            <p>
+              Below is the link with image with invalid
+              <em>aria-labelledby</em>
+            </p>
+            <a href="../lists/index.html">
+              <img
+                id="img13"
+                aria-labelledby="link_element2"
+                src="../images/Accessibility.jpg"
+                width="50"
+                height="50"
+              />
+            </a>
+            <div id="link_element3">
+              aria-labelledby text
+            </div>
+            <p>
+              Below is the link with image with empty
+              <em>aria-labelledby</em>
+            </p>
+            <a href="../lists/index.html">
+              <img
+                id="img14"
+                aria-labelledby=""
+                src="../images/Accessibility.jpg"
+                width="50"
+                height="50"
+              />
+            </a>
+            <div id="link_element10">
+              aria-labelledby text
+            </div>
+            <p>
+              Below is the link with image with
+              <em>aria-labelledby id has no reference</em>
+            </p>
+            <a href="../lists/index.html">
+              <img
+                id="img15"
+                aria-labelledby="link1"
+                src="../images/Accessibility.jpg"
+                width="50"
+                height="50"
+              />
+            </a>
+          </div>
+          <hr />
+        </section>
+        <section class="section">
+          <div class="container">
+            <h4 class="title">
+              Below are Links for testcase C6318
+            </h4>
+            <p>
+              Below is the link with image and
+              <em>valid link text</em>
+            </p>
+            <a href="../forms/index.html">
+              opens forms tool
+              <img
+                id="img16"
+                alt="logo"
+                src="../images/Accessibility.jpg"
+                width="50"
+                height="50"
+              />
+            </a>
+            <p>
+              Below is the link with image and link text +
+              <em>title</em>
+            </p>
+            <a href="../aria-modal/index.html">
+              Aria-modal tool page
+              <img
+                id="img17"
+                title="title text"
+                alt="logo"
+                src="../images/Accessibility.jpg"
+                width="50"
+                height="50"
+              />
+            </a>
+            <p>
+              Below is the link with image with link text +
+              <em>aria-label</em>
+            </p>
+            <a href="../images/index.html">
+              Images tool test page
+              <img
+                id="img18"
+                aria-label="aria-label text"
+                alt="logo"
+                src="../images/Accessibility.jpg"
+                width="50"
+                height="50"
+              />
+            </a>
+            <div id="link_element8">
+              aria-labelledby text
+            </div>
+            <p>
+              Below is the link with image and link text +
+              <em>aria-labelledby</em>
+            </p>
+            <a href="../lists/index.html">
+              Lists tool test page
+              <img
+                id="img19"
+                aria-labelledby="link_element8"
+                alt="logo"
+                src="../images/Accessibility.jpg"
+                width="50"
+                height="50"
+              />
+            </a>
+            <div id="info5">aria-describedby text</div>
+            <p>
+              Below is the link with image and link text +
+              <em>aria-describedby</em>
+            </p>
+            <a href="../lists/index.html">
+              Lists tool test page
+              <img
+                id="img20"
+                aria-describedby="info5"
+                alt="logo"
+                src="../images/Accessibility.jpg"
+                width="50"
+                height="50"
+              />
+            </a>
+            <p>
+              Below is the link with image
+              <em>without any link text</em>
+            </p>
+            <a href="../forms/index.html">
+              <img
+                id="img21"
+                src="../images/Accessibility.jpg"
+                width="50"
+                height="50"
+              />
+            </a>
+            <p>No link text is available</p>
+          </div>
+          <hr />
+        </section>
+      </main>
+      <footer class="footer">
+        <div class="content has-text-centered">
+          <p>
+            blah
+            <strong>blah</strong>
+            blah
+            <strong>footer</strong>
+            with a
+            <a href="../index.html">link</a>
+            .
+          </p>
+        </div>
+      </footer>
+    </div>
+  </body>
+</html>

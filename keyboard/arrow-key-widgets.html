@@ -1,0 +1,381 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1.0"
+    />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>Arrow Key Widgets</title>
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/bulma@0.8.0/css/bulma.min.css"
+    />
+    <style>
+      .panel {
+        display: none;
+        padding: 1em;
+        border: 1px dashed #000;
+      }
+
+      .panel.active {
+        display: block;
+      }
+
+      [role='tablist'] {
+        display: flex;
+      }
+
+      .button-group .wrapper {
+        display: flex;
+        padding-bottom: 10px;
+      }
+
+      .button-group button {
+        border: 3px solid black;
+        background-color: #fff;
+        font-size: 1.1em;
+      }
+
+      .button-group button[aria-selected='true'] {
+        background-color: #333;
+        color: #fff;
+      }
+
+      .button-group button:first-of-type {
+        border-top-left-radius: 6px;
+        border-bottom-left-radius: 6px;
+      }
+
+      .button-group button:last-of-type {
+        border-top-right-radius: 6px;
+        border-bottom-right-radius: 6px;
+      }
+
+      .button-group button:not(:first-child) {
+        border-left: none;
+      }
+
+      .menu {
+        position: absolute;
+        display: none;
+        border: 1px solid #ccc;
+        background: #fff;
+        box-shadow: 2px 2px 6px rgba(0, 0, 0, 0.25);
+      }
+
+      .menu--active {
+        display: block;
+      }
+
+      .menu li {
+        min-width: 10rem;
+      }
+
+      .menu button {
+        display: block;
+        appearance: none;
+        border: none;
+        background-color: transparent;
+        padding: 0.25rem 0.5rem;
+        margin: 0;
+        min-width: 100%;
+        text-align: left;
+      }
+
+      .menu button:hover {
+        background-color: #ddd;
+      }
+
+      .menu button:focus {
+        background-color: #4337b0;
+        color: #fff;
+        outline: none;
+      }
+
+      .menubar {
+        display: flex;
+        background-color: #f9f9f9;
+      }
+
+      .menubar a {
+        display: block;
+        padding: 0.5rem 1rem;
+        text-decoration: underline;
+        border-bottom: 3px solid transparent;
+      }
+
+      .menubar a:focus {
+        outline: none;
+        background-color: #e1e1e1;
+        border-bottom: 3px solid;
+        color: #000;
+      }
+    </style>
+  </head>
+  <body>
+    <section class="section">
+      <div class="container">
+        <h1 class="title">Arrow Key Widgets</h1>
+      </div>
+      <hr />
+    </section>
+    <section class="section">
+      <div class="container">
+        <h2 class="title is-medium">
+          Button Group (using role="tablist")
+        </h2>
+
+        <div
+          class="button-group"
+          role="tablist"
+          aria-label="Button Group"
+        >
+          <div class="wrapper">
+            <button
+              role="tab"
+              tabindex="0"
+              aria-selected="true"
+            >
+              Button 1
+            </button>
+            <button role="tab" tabindex="-1">
+              Button 2
+            </button>
+            <button role="tab" tabindex="-1">
+              Button 3
+            </button>
+          </div>
+        </div>
+      </div>
+      <hr />
+    </section>
+    <section class="section">
+      <div class="container">
+        <h2 class="title is-medium">Menu</h2>
+
+        <button
+          id="menubutton"
+          class="menu-trigger"
+          aria-controls="menu"
+          aria-haspopup="true"
+        >
+          Menu ↓
+        </button>
+        <div
+          id="menu"
+          class="menu"
+          role="menu"
+          aria-labelledby="menubutton"
+        >
+          <ul role="none">
+            <li role="none">
+              <button role="menuitem" tabindex="-1">
+                Item 1
+              </button>
+            </li>
+            <li role="none">
+              <button role="menuitem" tabindex="-1">
+                Item 2
+              </button>
+            </li>
+            <li role="none">
+              <button role="menuitem" tabindex="-1">
+                Item 3
+              </button>
+            </li>
+          </ul>
+        </div>
+      </div>
+      <hr />
+    </section>
+    <section class="section">
+      <div class="container">
+        <h2 class="title is-medium">Menu Bar</h2>
+
+        <ul
+          id="menubar"
+          class="menubar"
+          role="menubar"
+          aria-label="menu bar"
+        >
+          <li role="none">
+            <a href="#" role="menuitem" tabindex="0">
+              Menu Item 1
+            </a>
+          </li>
+          <li role="none">
+            <a href="#" role="menuitem" tabindex="-1">
+              Menu Item 2
+            </a>
+          </li>
+          <li role="none">
+            <a href="#" role="menuitem" tabindex="-1">
+              Menu Item 3
+            </a>
+          </li>
+        </ul>
+      </div>
+      <hr />
+    </section>
+  </body>
+  <script>
+    // Tabpanel
+    const tabs = Array.from(
+      document.querySelectorAll('[role=tab]')
+    )
+    const [panel1, panel2, panel3] = Array.from(
+      document.querySelectorAll('[role=tabpanel]')
+    )
+    const [tab1, tab2, tab3] = tabs
+
+    tabs.forEach((tab, i) => {
+      tab.addEventListener('click', () => {
+        tabs.forEach(t => {
+          t.setAttribute('aria-selected', 'false')
+          t.setAttribute('tabIndex', '-1')
+        })
+        tab.setAttribute('aria-selected', 'true')
+        tab.setAttribute('tabIndex', '0')
+        tab.focus()
+      })
+
+      tab.addEventListener('keydown', e => {
+        if (e.which < 37 || e.which > 40) {
+          return
+        }
+        e.preventDefault()
+
+        let activeTab
+
+        // Left
+        if (e.which === 37) {
+          activeTab = tabs[Math.max(i - 1, 0)]
+        } else if (e.which === 39) {
+          activeTab = tabs[Math.min(i + 1, tabs.length - 1)]
+        } else {
+          return
+        }
+
+        tabs.forEach(t => {
+          t.setAttribute('aria-selected', 'false')
+          t.setAttribute('tabIndex', '-1')
+        })
+
+        activeTab.setAttribute('aria-selected', 'true')
+        activeTab.setAttribute('tabIndex', '0')
+        activeTab.focus()
+      })
+    })
+
+    // Menu
+    const menuTrigger = document.querySelector(
+      '[aria-controls="menu"]'
+    )
+    const menu = document.querySelector('[role="menu"]')
+    const menuItems = Array.from(
+      document.querySelectorAll(
+        '[role="menu"] [role="menuitem"]'
+      )
+    )
+
+    menuTrigger.addEventListener('click', () => {
+      menu.classList.toggle('menu--active')
+    })
+
+    menuTrigger.addEventListener('keydown', e => {
+      // Down arrow or enter
+      if (e.which === 13 || e.which == 40) {
+        menu.classList.toggle('menu--active')
+        menuItems.forEach(m => {
+          m.setAttribute('tabIndex', '-1')
+        })
+
+        const activeItem = menuItems[0]
+        activeItem.focus()
+        activeItem.setAttribute('tabIndex', '0')
+      }
+
+      // Esc
+      if (e.which === 27) {
+        menu.classList.toggle('menu--active')
+      }
+    })
+
+    menuItems.forEach((item, index) => {
+      item.addEventListener('keydown', e => {
+        if (![38, 40, 27].includes(e.which)) {
+          return
+        }
+
+        menuItems.forEach(m => {
+          m.setAttribute('tabIndex', '-1')
+        })
+
+        let activeMenuItem
+
+        // Up
+        if (e.which === 38) {
+          if (index === 0) {
+            activeMenuItem = menuItems[menuItems.length - 1]
+          } else {
+            activeMenuItem = menuItems[index - 1]
+          }
+        } else if (e.which === 40) {
+          if (index === menuItems.length - 1) {
+            activeMenuItem = menuItems[0]
+          } else {
+            activeMenuItem = menuItems[index + 1]
+          }
+        } else if (e.which === 27) {
+          menu.classList.toggle('menu--active')
+          menuTrigger.focus()
+          return
+        } else {
+          return
+        }
+
+        activeMenuItem.focus()
+        activeMenuItem.classList.toggle('menuitem--active')
+        activeMenuItem.setAttribute('tabIndex', '0')
+      })
+    })
+
+    // Menu Bar
+    const menuBarItems = Array.from(
+      document.querySelectorAll(
+        '[role="menubar"] [role="menuitem"]'
+      )
+    )
+    menuBarItems.forEach((item, index) => {
+      item.addEventListener('keydown', e => {
+        if (![37, 39].includes(e.which)) {
+          return
+        }
+
+        let activeMenuItem
+
+        // Left
+        if (e.which === 37) {
+          activeMenuItem =
+            menuBarItems[Math.max(index - 1, 0)]
+        } else if (e.which === 39) {
+          activeMenuItem =
+            menuBarItems[
+              Math.min(index + 1, menuBarItems.length - 1)
+            ]
+        } else {
+          return
+        }
+
+        menuBarItems.forEach(t => {
+          t.setAttribute('tabIndex', '-1')
+        })
+
+        activeMenuItem.focus()
+        activeMenuItem.setAttribute('tabIndex', '0')
+      })
+    })
+  </script>
+</html>

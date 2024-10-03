@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1.0"
+    />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>Offscreen tab stop test page</title>
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/bulma@0.8.0/css/bulma.min.css"
+    />
+    <style>
+      .offscreen {
+        margin-left: -999px;
+      }
+
+      .zero,
+      .hidden-on-focus:focus {
+        width: 0;
+        height: 0;
+        overflow: hidden;
+        display: block;
+      }
+
+      .clipped {
+        position: absolute !important;
+        height: 1px;
+        width: 1px;
+        overflow: hidden;
+        clip: rect(1px, 1px, 1px, 1px);
+        margin-top: -1px;
+      }
+
+      .stop {
+        padding: 4em;
+        background: #f2f2fd;
+        margin: 1em auto;
+        width: 85%;
+      }
+
+      .stop:focus-within {
+        box-shadow: 0 0 5px;
+      }
+    </style>
+  </head>
+  <body>
+    <main>
+      <h1 class="title">
+        Hidden tab stops (keyboard tool)
+      </h1>
+
+      <div class="stop">
+        <h2 class="title">empty</h2>
+        <div tabindex="0"></div>
+      </div>
+
+      <div class="stop">
+        <h2 class="title">offscreen</h2>
+        <button class="offscreen">Foo</button>
+      </div>
+
+      <div class="stop">
+        <h2 class="title">0 x 0</h2>
+        <a href="/" class="zero">Bar</a>
+      </div>
+
+      <div class="stop">
+        <h2 class="title">hidden on focus</h2>
+        <button class="hidden-on-focus">Baz</button>
+      </div>
+
+      <div class="stop">
+        <h2 class="title">clipped</h2>
+        <button class="clipped">Jazz</button>
+      </div>
+    </main>
+  </body>
+</html>

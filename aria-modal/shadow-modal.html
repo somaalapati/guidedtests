@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1.0"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/bulma@0.8.0/css/bulma.min.css"
+    />
+    <title>ARIA Modal in Shadow DOM</title>
+  </head>
+
+  <body>
+    <section class="section">
+      <div class="container">
+        <h3 class="title">Modal in shadow DOM</h3>
+        <shadow-dialog></shadow-dialog>
+        <button id="shadow-dialog-trigger">
+          Trigger modal!
+        </button>
+      </div>
+    </section>
+  </body>
+  <script>
+    class ShadowDialog extends HTMLElement {
+      static get observedAttributes() {
+        return ['open']
+      }
+
+      constructor() {
+        super()
+        this.attachShadow({ mode: 'open' })
+        this.close = this.close.bind(this)
+      }
+
+      attributeChangedCallback(
+        attrName,
+        oldValue,
+        newValue
+      ) {
+        if (oldValue !== newValue) {
+          this[attrName] = this.hasAttribute(attrName)
+        }
+      }
+
+      connectedCallback() {
+        const { shadowRoot } = this
+        shadowRoot.innerHTML = `
+        <link rel="stylesheet" href="./index.css" />
+        <style>
+          .wrapper {
+            opacity: 0;
+            transition: visibility 0s, opacity 0.25s ease-in;
+          }
+          .wrapper:not(.open) {
+            visibility: hidden;
+          }
+          .wrapper.open {
+            align-items: center;
+            display: flex;
+            justify-content: center;
+            height: 100vh;
+            position: fixed;
+              top: 0;
+              left: 0;
+              right: 0;
+              bottom: 0;
+            opacity: 1;
+            visibility: visible;
+          }
+          .modal-dialog {
+            display: block
+          }
+        </style>
+        <div class="wrapper">
+        <div class="modal-dialog" role="dialog" aria-labelledby="title" aria-describedby="content" tabindex="-1">
+          <button class="modal-close" aria-label="Close">X</button>
+          <h1 id="title">Hello world</h1>
+          <div id="content" class="content">
+            <p>I am a modal in shadow DOM</p>
+          </div>
+        </div>`
+
+        shadowRoot
+          .querySelector('.modal-close')
+          .addEventListener('click', this.close)
+      }
+
+      disconnectedCallback() {
+        this.shadowRoot
+          .querySelector('.modal-close')
+          .removeEventListener('click', this.close)
+      }
+
+      get open() {
+        return this.hasAttribute('open')
+      }
+
+      set open(isOpen) {
+        const { shadowRoot } = this
+        shadowRoot
+          .querySelector('.wrapper')
+          .classList.toggle('open', isOpen)
+        shadowRoot
+          .querySelector('.wrapper')
+          .setAttribute('aria-hidden', !isOpen)
+
+        if (isOpen) {
+          this.wasFocused = document.activeElement
+          this.setAttribute('open', '')
+          this.addEventListener(
+            'keydown',
+            this.handleEscape
+          )
+          shadowRoot.querySelector('.modal-dialog').focus()
+        } else {
+          this.wasFocused &&
+            this.wasFocused.focus &&
+            this.wasFocused.focus()
+          this.removeAttribute('open')
+          this.removeEventListener(
+            'keydown',
+            this.handleEscape
+          )
+          this.close()
+        }
+      }
+
+      close() {
+        if (this.open !== false) {
+          this.open = false
+        }
+      }
+
+      handleEscape(event) {
+        if (event.key === 'Escape') {
+          this.close()
+        }
+      }
+    }
+
+    customElements.define('shadow-dialog', ShadowDialog)
+
+    const button = document.getElementById(
+      'shadow-dialog-trigger'
+    )
+    button.addEventListener('click', () => {
+      document.querySelector('shadow-dialog').open = true
+    })
+  </script>
+</html>

@@ -1,0 +1,480 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1.0"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/bulma@0.8.0/css/bulma.min.css"
+    />
+    <link
+      href="https://use.fontawesome.com/99d8f1b106.css"
+      media="all"
+      rel="stylesheet"
+    />
+    <title>ARIA Modal tool test page</title>
+    <link rel="stylesheet" href="./index.css" />
+    <script>
+      class CustomButton extends HTMLElement {
+        constructor() {
+          super()
+          this.attachShadow({ mode: 'open' })
+          const button = document.createElement('button')
+          const slot = document.createElement('slot')
+          button.appendChild(slot)
+          this.shadowRoot.append(button)
+        }
+      }
+      customElements.define('custom-button', CustomButton)
+
+      customElements.define(
+        'my-custom-element-with-slot',
+        class extends HTMLElement {
+          constructor() {
+            super()
+
+            const template = document.getElementById(
+              'modal-with-slots'
+            )
+            const templateContent = template.content
+
+            const root = this.attachShadow({ mode: 'open' })
+            root.appendChild(
+              templateContent.cloneNode(true)
+            )
+
+            // apply styles to shadow DOM
+            const linkElem = document.createElement('link')
+            linkElem.setAttribute('rel', 'stylesheet')
+            linkElem.setAttribute('href', './index.css')
+            root.appendChild(linkElem)
+          }
+        }
+      )
+    </script>
+  </head>
+
+  <body>
+    <div id="wrapper">
+      <header class="hero is-medium is-info is-bold">
+        <div class="hero-body">
+          <div class="container">
+            <h1 class="title">ARIA Modal tool test page</h1>
+            <a class="button" href="../index.html">
+              Go home
+            </a>
+            <a class="button" href="./native-dialog.html">
+              Native dialog
+            </a>
+          </div>
+        </div>
+      </header>
+      <main>
+        <section class="section">
+          <div class="container">
+            <h3 class="title">Modal Settings</h3>
+            <ul class="config">
+              <li>
+                <input
+                  type="checkbox"
+                  id="focus-to-modal"
+                />
+                <label for="focus-to-modal">
+                  Bring focus to modal when launched
+                </label>
+              </li>
+              <li>
+                <input
+                  type="checkbox"
+                  id="has-dialog-role"
+                />
+                <label for="has-dialog-role">
+                  Has dialog role on modal
+                </label>
+              </li>
+              <li>
+                <input
+                  type="checkbox"
+                  id="sets-aria-modal"
+                />
+                <label for="sets-aria-modal">
+                  Sets
+                  <code>aria-modal="true"</code>
+                </label>
+              </li>
+              <li>
+                <input
+                  type="checkbox"
+                  id="manages-aria-hidden"
+                />
+                <label for="manages-aria-hidden">
+                  Properly manages
+                  <code>aria-hidden</code>
+                  outside the modal
+                </label>
+              </li>
+              <li>
+                <input
+                  type="checkbox"
+                  id="returns-focus-to-trigger"
+                />
+                <label for="returns-focus-to-trigger">
+                  Returns focus to trigger
+                </label>
+              </li>
+              <li>
+                <input type="checkbox" id="escape-closes" />
+                <label for="escape-closes">
+                  Closes modal when
+                  <kbd>Esc</kbd>
+                  is pressed
+                </label>
+              </li>
+              <li>
+                <input
+                  type="checkbox"
+                  id="no-submits-form"
+                />
+                <label for="no-submits-form">
+                  Does not submit data when modal is closed
+                </label>
+              </li>
+            </ul>
+            <button id="check-all">Check all</button>
+            <button id="uncheck-all">Uncheck all</button>
+            <h3 class="title" style="margin-top: 3rem">
+              Focus Trap Settings
+            </h3>
+            <ul class="focus-config">
+              <li>
+                <input
+                  type="checkbox"
+                  id="traps-focus-keydown"
+                />
+                <label for="traps-focus-keydown">
+                  Traps focus (forwards focus on keypress
+                  with first/last dialog focusable elements)
+                </label>
+              </li>
+              <li>
+                <input
+                  type="checkbox"
+                  id="traps-focus-forward"
+                />
+                <label for="traps-focus-forward">
+                  Traps focus (forwards focus on focused
+                  elements outside of the modal dialog)
+                </label>
+              </li>
+            </ul>
+          </div>
+          <hr />
+        </section>
+        <section class="section">
+          <div class="container">
+            <h3 class="title">
+              Modal with multiple interactive elements
+            </h3>
+            <template>
+              <div class="modal-dialog" tabindex="-1">
+                <h2>Hello world!</h2>
+                <button
+                  class="modal-close"
+                  aria-label="close"
+                  data-trigger="modal-close"
+                ></button>
+                <a
+                  href="https://google.com"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
+                  Google
+                </a>
+                <br />
+                <a
+                  href="https://deque.com"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
+                  Deque
+                </a>
+                <br />
+                <form id="form" action="#"></form>
+                <button
+                  id="broken-modal-ok"
+                  data-trigger="modal-close"
+                >
+                  OK
+                </button>
+              </div>
+            </template>
+            <button data-trigger="modal-open">
+              Trigger modal!
+            </button>
+          </div>
+          <hr />
+        </section>
+        <section class="section">
+          <div class="container">
+            <h3 class="title">
+              Modal with a single interactive element
+            </h3>
+            <template>
+              <div class="modal-dialog" tabindex="-1">
+                <h2>Hello world!</h2>
+                <button
+                  class="modal-close"
+                  aria-label="close"
+                  data-trigger="modal-close"
+                ></button>
+                <p>
+                  I only have a single interactive element!
+                </p>
+                <form id="form" action="#"></form>
+              </div>
+            </template>
+            <button data-trigger="modal-open">
+              Trigger modal!
+            </button>
+          </div>
+          <hr />
+        </section>
+        <section class="section">
+          <div class="container">
+            <h3 class="title">
+              Modal with shadow dom interactive elements
+            </h3>
+            <template>
+              <div class="modal-dialog" tabindex="-1">
+                <h2>Hello world!</h2>
+                <button
+                  class="modal-close"
+                  aria-label="close"
+                  data-trigger="modal-close"
+                ></button>
+                <p>
+                  I have some shadow dom interactive
+                  elements!
+                </p>
+                <custom-button>one</custom-button>
+                <custom-button>two</custom-button>
+                <form id="form" action="#"></form>
+              </div>
+            </template>
+            <button data-trigger="modal-open">
+              Trigger modal!
+            </button>
+          </div>
+          <hr />
+        </section>
+        <section class="section">
+          <div class="container">
+            <h3 class="title">Modal in iframe</h3>
+            <iframe
+              src="modal-for-iframe.html"
+              height="250"
+              width="400"
+              title="Modal in iframe"
+            ></iframe>
+          </div>
+          <hr />
+        </section>
+        <section class="section">
+          <div class="container">
+            <h3 class="title">Modal with image</h3>
+            <template>
+              <div class="modal-dialog" tabindex="-1">
+                <h2 class="subtitle">Modal with Image</h2>
+                <button
+                  class="modal-close"
+                  aria-label="close"
+                  data-trigger="modal-close"
+                ></button>
+                <img
+                  src="maxresdefault.jpg"
+                  width="300"
+                  height="300"
+                  alt="Devtools logo"
+                />
+                <form id="form" action="#"></form>
+              </div>
+            </template>
+            <button data-trigger="modal-open">
+              Trigger modal!
+            </button>
+          </div>
+          <hr />
+        </section>
+        <section class="section">
+          <div class="container">
+            <h3 class="title">Modal with lists</h3>
+            <template>
+              <div class="modal-dialog" tabindex="-1">
+                <button
+                  class="modal-close"
+                  aria-label="close"
+                  data-trigger="modal-close"
+                ></button>
+                <!-- <img src="maxresdefault.jpg" width="300" height="300" alt="Devtools logo" /> -->
+                <h2 class="subtitle">An ordered list</h2>
+
+                <ol style="padding: 10%">
+                  <li>One</li>
+                  <li>Two</li>
+                  <li>Three</li>
+                </ol>
+                <h2 class="subtitle">An unordered list</h2>
+
+                <ul>
+                  <li>Coffee</li>
+                  <li>Tea</li>
+                  <li>Milk</li>
+                </ul>
+                <form id="form" action="#"></form>
+              </div>
+            </template>
+            <button data-trigger="modal-open">
+              Trigger modal!
+            </button>
+          </div>
+          <hr />
+        </section>
+        <section class="section">
+          <div class="container">
+            <h3 class="title">Modal with slots</h3>
+            <template id="modal-with-slots">
+              <div class="modal-dialog" tabindex="-1">
+                <h2 class="subtitle">Modal with slots</h2>
+                <slot name="dialog-slot"></slot>
+                <button
+                  class="modal-close"
+                  aria-label="close"
+                  data-trigger="modal-close"
+                ></button>
+                <form id="form" action="#"></form>
+              </div>
+            </template>
+            <my-custom-element-with-slot
+              id="custom-element"
+            >
+              <a slot="dialog-slot" id="element" href="#">
+                I am actually inside of a dialog
+              </a>
+            </my-custom-element-with-slot>
+            <button data-trigger="modal-open">
+              Trigger modal!
+            </button>
+          </div>
+          <hr />
+        </section>
+        <section class="section">
+          <div class="container">
+            <h3 class="title">
+              Modal with a trigger that is not focusable
+            </h3>
+            <template>
+              <div class="modal-dialog" tabindex="-1">
+                <h2>Hello world!</h2>
+                <form id="form" action="#"></form>
+                <button
+                  id="broken-modal-ok"
+                  data-trigger="modal-close"
+                >
+                  OK
+                </button>
+              </div>
+            </template>
+            <button data-trigger="modal-open">
+              <span id="non-focusable-trigger">
+                Trigger modal!
+              </span>
+            </button>
+          </div>
+          <hr />
+        </section>
+        <section class="section">
+          <div class="container">
+            <h3 class="title">Modal without trigger</h3>
+            <p class="subtitle">
+              Pressing
+              <kbd>shift</kbd>
+              +
+              <kbd>/</kbd>
+              (aka
+              <kbd>?</kbd>
+              ) will launch the keyboard shortcuts modal
+            </p>
+          </div>
+          <hr />
+        </section>
+      </main>
+      <footer class="footer">
+        <div class="content has-text-centered">
+          <p>
+            blah
+            <strong>blah</strong>
+            blah
+            <strong>footer</strong>
+            with a
+            <a href="../index.html">link</a>
+            .
+          </p>
+        </div>
+      </footer>
+    </div>
+
+    <div
+      id="kbd-modal"
+      role="dialog"
+      class="modal-dialog"
+      tabindex="-1"
+    >
+      <h2>Keyboard shortcuts</h2>
+      <button
+        class="modal-close"
+        id="kbd-modal-x"
+        class="fa fa-times"
+        aria-label="close"
+      ></button>
+      <table class="table">
+        <thead>
+          <tr>
+            <th>Key</th>
+            <th>Action</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>
+              <kbd>shift</kbd>
+              +
+              <kbd>/</kbd>
+            </td>
+            <td>Trigger this modal</td>
+          </tr>
+          <tr>
+            <td>
+              <kbd>ctrl</kbd>
+              +
+              <kbd>a</kbd>
+            </td>
+            <td><code>alert('hello')</code></td>
+          </tr>
+          <tr>
+            <td>
+              <kbd>ctrl</kbd>
+              +
+              <kbd>b</kbd>
+            </td>
+            <td><code>alert('world')</code></td>
+          </tr>
+        </tbody>
+      </table>
+      <button id="kbd-ok">Close</button>
+    </div>
+    <script src="./dynamic-modal.js"></script>
+  </body>
+</html>

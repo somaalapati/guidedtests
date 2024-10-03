@@ -1,0 +1,215 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1.0"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/bulma@0.8.0/css/bulma.min.css"
+    />
+    <link
+      href="https://use.fontawesome.com/99d8f1b106.css"
+      media="all"
+      rel="stylesheet"
+    />
+    <title>Forms tool test page</title>
+    <style>
+      .errors:not(:empty) {
+        padding: 1em;
+        border: 2px solid;
+        border-radius: 5px;
+        width: 400px;
+        max-width: 100%;
+        background-color: #fff;
+        margin: 1em 0;
+      }
+
+      .errors:focus {
+        box-shadow: 0 0 25px #000;
+      }
+    </style>
+  </head>
+
+  <body>
+    <div id="wrapper">
+      <header class="hero is-medium is-info is-bold">
+        <div class="hero-body">
+          <div class="container">
+            <h1 class="title">Forms tool test page</h1>
+            <div class="col-1-1">
+              <form id="simple-form" name="simple">
+                <div
+                  class="errors has-text-danger"
+                  tabindex="-1"
+                ></div>
+                <label for="username-field">
+                  <span>Username*</span>
+                </label>
+                <input
+                  id="username-field"
+                  type="text"
+                  name="username"
+                  required
+                  aria-required="true"
+                />
+                <div>
+                  Must be at least 3 characters in length
+                </div>
+                <div>
+                  <label for="password-field">
+                    <span>Password*</span>
+                  </label>
+                  <input
+                    id="password-field"
+                    type="text"
+                    name="password"
+                  />
+                </div>
+                <div>
+                  <fieldset>
+                    <legend id="group-legend">
+                      What is your favorite color
+                    </legend>
+                    <input
+                      type="radio"
+                      name="color"
+                      id="red"
+                    />
+                    <label for="red">Red</label>
+                    <input
+                      type="radio"
+                      name="color"
+                      id="blue"
+                    />
+                    <label for="blue">Blue</label>
+                    <input
+                      type="radio"
+                      name="color"
+                      id="green"
+                      checked
+                    />
+                    <label for="green">Green</label>
+                  </fieldset>
+                </div>
+                <div
+                  data-type="radio"
+                  data-name="gender-wrapper"
+                  id="gender"
+                >
+                  Below are the radio buttons without group
+                  label
+                  <br />
+                  <span>
+                    <input
+                      type="radio"
+                      name="gender"
+                      id="female"
+                      checked
+                    />
+                    <label for="female">Female</label>
+                  </span>
+                  <span>
+                    <input
+                      type="radio"
+                      name="gender"
+                      id="male"
+                    />
+                    <label for="male">Male</label>
+                  </span>
+                </div>
+                <br />
+                <button class="button" type="submit">
+                  Sign In
+                </button>
+                <a
+                  class="button"
+                  href="./multiple-forms.html"
+                >
+                  Go to multiple forms page
+                </a>
+                <a
+                  class="button"
+                  href="./no-form-elements.html"
+                >
+                  Go to no forms elements page
+                </a>
+                <a
+                  class="button"
+                  href="./form-validation.html"
+                >
+                  Go to form validation page
+                </a>
+              </form>
+            </div>
+          </div>
+        </div>
+      </header>
+      <main>
+        <section class="section">
+          <div class="container">
+            <h3 class="title">Stuff</h3>
+            <p>Lorem ipsum and stuff</p>
+          </div>
+          <hr />
+        </section>
+        <section class="section">
+          <div class="container">
+            <h3 class="title">Stuff</h3>
+            <p>Lorem ipsum and things</p>
+          </div>
+          <hr />
+        </section>
+      </main>
+      <footer class="footer">
+        <div class="content has-text-centered">
+          <p>
+            blah
+            <strong>blah</strong>
+            blah
+            <strong>footer</strong>
+          </p>
+        </div>
+      </footer>
+    </div>
+    <script>
+      var form = document.getElementById('simple-form')
+      var username = document.getElementById(
+        'username-field'
+      )
+      var password = document.getElementById(
+        'password-field'
+      )
+      var errorWrapper = document.querySelector('.errors')
+
+      function errorHandler(text) {
+        errorWrapper.innerHTML += '<div>' + text + '</div>'
+      }
+
+      form.addEventListener('submit', function (e) {
+        e.preventDefault()
+
+        // clean up previous errors
+        errorWrapper.innerHTML = ''
+
+        if (!username.value || username.value.length < 3) {
+          errorHandler(
+            'Username must be at least 3 characters in length'
+          )
+        }
+
+        if (!password.value) {
+          errorHandler('Password is required!')
+        }
+
+        if (!errorWrapper.innerHTML.length) {
+          alert('Great success!')
+        } else {
+          errorWrapper.focus()
+        }
+      })
+    </script>
+  </body>
+</html>

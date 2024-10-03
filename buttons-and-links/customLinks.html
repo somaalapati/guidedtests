@@ -1,0 +1,325 @@
+<!DOCTYPE html>
+<html lang="en-US">
+  <head>
+    <meta charset="UTF-8" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1.0"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/bulma@0.8.0/css/bulma.min.css"
+    />
+    <title>Custom links test page</title>
+    <style>
+      [role='link'] {
+        color: blue;
+        text-decoration: underline;
+        cursor: pointer;
+      }
+      [role='link']:focus {
+        outline: 2px dashed black;
+      }
+    </style>
+  </head>
+  <body>
+    <div>
+      <header class="hero is-medium is-info is-bold">
+        <div class="hero-body">
+          <div class="container">
+            <h1 class="title">
+              Buttons and Links tool test page for custom
+              links
+            </h1>
+            <a class="button" href="../index.html">
+              Go home
+            </a>
+          </div>
+        </div>
+      </header>
+      <main>
+        <section class="section">
+          <div class="container">
+            <h4 class="title">
+              Below are Links for testcase C6311
+            </h4>
+            <p>
+              Below is the link created with span
+              <em>without any link text</em>
+            </p>
+            <span
+              data-href="../forms/index.html"
+              role="link"
+              id="link1"
+              tabindex="0"
+            >
+              <em></em>
+            </span>
+            <p>No link text is available</p>
+            <p>
+              Below is the link created with
+              <em>span</em>
+              with link text +
+              <em>aria-label</em>
+            </p>
+            <span
+              data-href="../images/index.html"
+              role="link"
+              id="link2"
+              tabindex="0"
+              aria-label="aria-label text"
+            >
+              Images tool test page
+            </span>
+            <p>
+              Below is the link created with
+              <em>div</em>
+              with link text +
+              <em>title</em>
+            </p>
+            <div
+              data-href="../aria-modal/index.html"
+              role="link"
+              id="link3"
+              tabindex="0"
+              title="title text"
+            >
+              Aria-modal tool test page
+            </div>
+            <div id="link_element">
+              aria-labelledby text
+            </div>
+            <p>
+              Below is the link created with
+              <em>div</em>
+              with link text +
+              <em>aria-labelledby</em>
+            </p>
+            <div
+              data-href="../lists/index.html"
+              role="link"
+              id="link4"
+              tabindex="0"
+              aria-labelledby="link_element"
+            >
+              Lists tool test page
+            </div>
+            <div id="info">aria-describedby text</div>
+            <p>
+              Below is the link created with
+              <em>div</em>
+              with link text +
+              <em>aria-describedby</em>
+            </p>
+            <div
+              data-href="../lists/index.html"
+              role="link"
+              id="link5"
+              tabindex="0"
+              aria-describedby="info"
+            >
+              Lists tool test page
+            </div>
+            <p>
+              Below is the link created with
+              <em>span</em>
+              with
+              <em>valid link text</em>
+            </p>
+            <span
+              data-href="../forms/index.html"
+              role="link"
+              id="link6"
+              tabindex="0"
+            >
+              Opens forms tool test page
+            </span>
+            <p>
+              Below is the link created with
+              <em>span</em>
+              with
+              <em>invalid link text</em>
+            </p>
+            <span
+              data-href="../forms/index.html"
+              role="link"
+              id="link7"
+              tabindex="0"
+            >
+              Opens images tool test page
+            </span>
+          </div>
+        </section>
+        <section class="section">
+          <div class="container">
+            <h4 class="title">
+              Below are Links for testcase C6312
+            </h4>
+            <p>
+              Below is the link created with button
+              <em>without any link text</em>
+            </p>
+            <button
+              data-href="../forms/index.html"
+              role="link"
+              id="link8"
+              tabindex="0"
+            >
+              <em></em>
+            </button>
+            <p>No link text is available</p>
+            <p>
+              Below is the link created with button with
+              link +
+              <em>aria-label</em>
+            </p>
+            <button
+              data-href="../images/index.html"
+              role="link"
+              id="link9"
+              tabindex="0"
+              aria-label="aria-label text"
+            >
+              Images tool test page
+            </button>
+            <p>
+              Below is the button with role=link with link
+              text +
+              <em>title</em>
+            </p>
+            <button
+              data-href="../aria-modal/index.html"
+              role="link"
+              id="link10"
+              tabindex="0"
+              title="title text"
+            >
+              Aria-modal tool test page
+            </button>
+            <div id="link_element10">
+              aria-labelledby text
+            </div>
+            <p>
+              Below is the button with role=link with link
+              text +
+              <em>aria-labelledby</em>
+            </p>
+            <button
+              data-href="../lists/index.html"
+              role="link"
+              id="link11"
+              tabindex="0"
+              aria-labelledby="link_element10"
+            >
+              Lists tool test page
+            </button>
+            <div id="info2">aria-describedby text</div>
+            <p>
+              Below is the button with role=link with link
+              text +
+              <em>aria-describedby</em>
+            </p>
+            <button
+              data-href="../lists/index.html"
+              role="link"
+              id="link12"
+              tabindex="0"
+              aria-describedby="info2"
+            >
+              Lists tool test page
+            </button>
+            <p>
+              Below is the button with role=link with
+              <em>valid link text</em>
+            </p>
+            <button
+              data-href="../forms/index.html"
+              role="link"
+              id="link13"
+              tabindex="0"
+            >
+              Opens forms tool test page
+            </button>
+            <p>
+              Below is the button with role=link with
+              <em>invalid link text</em>
+            </p>
+            <button
+              data-href="../forms/index.html"
+              role="link"
+              id="link14"
+              tabindex="0"
+            >
+              Opens images tool test page
+            </button>
+          </div>
+          <hr />
+        </section>
+        <section class="section">
+          <div class="container">
+            <h4 class="title">
+              Below are Links for testcase C6313
+            </h4>
+            <p>
+              Below is the link without linktext with valid
+              title
+            </p>
+            <a
+              href="../aria-modal/index.html"
+              title="opens aria-modal page"
+            >
+              <strong></strong>
+            </a>
+            <hr />
+            <p>
+              Below is the link without linktext with
+              invalid title
+            </p>
+            <a
+              href="../aria-modal/index.html"
+              title="title text"
+            >
+              <strong></strong>
+            </a>
+            <hr />
+            <p>
+              Below is the link without linktext with empty
+              title
+            </p>
+            <a href="../aria-modal/index.html" title="">
+              <strong></strong>
+            </a>
+            <hr />
+          </div>
+          <hr />
+        </section>
+        <section class="section">
+          <div class="container">
+            <h4 class="title">
+              Below are Links for testcase C6319
+            </h4>
+            <p>
+              Below is the link which contains emoji as
+              linktext
+            </p>
+            <a href="../aria-modal/index.html">&#128540;</a>
+          </div>
+          <hr />
+        </section>
+      </main>
+      <footer class="footer">
+        <div class="content has-text-centered">
+          <p>
+            blah
+            <strong>blah</strong>
+            blah
+            <strong>footer</strong>
+            with a
+            <a href="../index.html">link</a>
+            .
+          </p>
+        </div>
+      </footer>
+    </div>
+  </body>
+</html>

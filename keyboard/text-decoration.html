@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1.0"
+    />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>
+      Text-decoration Styles (keyboard tool testing)
+    </title>
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/bulma@0.8.0/css/bulma.min.css"
+    />
+  </head>
+  <body>
+    <h1>Text-decoration Styles</h1>
+    <script>
+      const colors = [
+        '#f92089',
+        '#ccc',
+        '#000',
+        // 'inherit',
+        // 'initial',
+        // 'unset',
+        // 'invert',
+        'currentcolor'
+      ]
+      // text-decoration changes
+      const lineTypes = [
+        'underline',
+        'overline',
+        'line-through',
+        'underline overline'
+      ]
+      const lineStyles = [
+        'solid',
+        'double',
+        'dotted',
+        'dashed',
+        'wavy'
+      ]
+      const lineThicknesses = [
+        '1px',
+        '2px',
+        '3px',
+        'auto',
+        'from-font'
+      ]
+      let [list, sheet] = createList(
+        'line-styles',
+        '#line-styles a {outline: none;}'
+      )
+      let ruleCount = 1
+      for (let product of cartesian(
+        lineTypes,
+        lineStyles,
+        colors,
+        lineThicknesses
+      )) {
+        const [lineType, lineStyle, color, lineThickness] =
+          product
+        const rule = `text-decoration-line: ${lineType}; text-decoration-style: ${lineStyle}; text-decoration-color: ${color}; text-decoration-thickness: ${lineThickness};`
+        list.insertAdjacentHTML(
+          'beforeend',
+          `<li><a href="#" id="line-styles-${ruleCount}">${product.join(
+            ' '
+          )}</a>${'&nbsp;'.repeat(
+            10
+          )}<span id="line-styles-${ruleCount}-focus">${product.join(
+            ' '
+          )}</span></li>`
+        )
+        sheet.insertRule(
+          `#line-styles-${ruleCount}:focus {${rule}}`
+        )
+        sheet.insertRule(
+          `#line-styles-${ruleCount}-focus {${rule}}`
+        )
+        ruleCount++
+      }
+      function createList(id, css = '') {
+        const styleElm = document.createElement('style')
+        document.body.appendChild(styleElm)
+        styleElm.textContent = `
+  #${id} {list-style: none;counter-reset: ${id}-counter;padding: 1em;}
+  #${id} li {counter-increment: ${id}-counter;}
+  #${id} li::before {content: counter(${id}-counter) ". ";color: black;}
+  ${css}`
+        const ol = document.createElement('ol')
+        ol.id = id
+        document.body.appendChild(ol)
+        const { sheet } = styleElm
+        return [ol, sheet]
+      }
+      // Generate all combinations of array elements:
+      function* cartesian(head, ...tail) {
+        let remainder = tail.length
+          ? cartesian(...tail)
+          : [[]]
+        for (let r of remainder) {
+          for (let h of head) {
+            yield [h, ...r]
+          }
+        }
+      }
+    </script>
+  </body>
+</html>

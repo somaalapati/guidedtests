@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1.0"
+    />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>Closed shadow DOM test page</title>
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/bulma@0.8.0/css/bulma.min.css"
+    />
+  </head>
+
+  <body>
+    <main>
+      <h1 class="title">Closed Shadow DOM</h1>
+
+      <h2 class="title">
+        Closed Shadow DOM Element with One Child
+      </h2>
+      <div id="closed-1"></div>
+
+      <h2 class="title">
+        Closed Shadow DOM Element with Two Children
+      </h2>
+      <div id="closed-2"></div>
+
+      <h2 class="title">
+        Closed Shadow DOM Element inside Open Shadow DOM
+        element
+      </h2>
+      <div id="open-1"></div>
+
+      <h2 class="title">Audio with User-Agent Controls</h2>
+      <audio
+        aria-label="Sample audio clip for testing user-agent controls"
+        controls
+      >
+        <source
+          src="https://www.fesliyanstudios.com/play-mp3/6560"
+          type="audio/mpeg"
+        />
+        Your browser does not support the audio element.
+      </audio>
+
+      <h2 class="title">Video with User-Agent Controls</h2>
+      <video
+        aria-label="Sample video clip for testing user-agent controls"
+        width="320"
+        height="240"
+        controls
+        src="https://st2.depositphotos.com/1428014/43851/v/600/depositphotos_438514782-stock-video-brushing-bbq-sauce-barbecued-ribs.mp4"
+      >
+        Your browser does not support the video tag.
+      </video>
+    </main>
+
+    <script>
+      const closedHost1 =
+        document.getElementById('closed-1')
+      const shadow1 = closedHost1.attachShadow({
+        mode: 'closed'
+      })
+      const button1 = document.createElement('button')
+      button1.innerText = 'Button 1'
+      shadow1.appendChild(button1)
+
+      const closedHost2 =
+        document.getElementById('closed-2')
+      const button2 = document.createElement('button')
+      const shadow2 = closedHost2.attachShadow({
+        mode: 'closed'
+      })
+      button2.innerText = 'Button 2'
+      const button3 = document.createElement('button')
+      button3.innerText = 'Button 3'
+      shadow2.appendChild(button2)
+      shadow2.appendChild(button3)
+
+      const openHost = document.getElementById('open-1')
+      const shadow3 = openHost.attachShadow({
+        mode: 'open'
+      })
+      const closedHost3 = document.createElement('div')
+      const shadow4 = closedHost3.attachShadow({
+        mode: 'closed'
+      })
+      const button4 = document.createElement('button')
+      button4.innerText = 'Button 4'
+      shadow4.appendChild(button4)
+      shadow3.appendChild(closedHost3)
+    </script>
+  </body>
+</html>

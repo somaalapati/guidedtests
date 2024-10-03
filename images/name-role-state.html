@@ -1,0 +1,349 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1.0"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/bulma@0.8.0/css/bulma.min.css"
+    />
+    <title>Images tool name/role/state test page</title>
+    <style>
+      .Info {
+        background-image: url('./arrow-circle-o-down.png');
+        background-repeat: no-repeat;
+        background-position: center;
+        background-color: #000;
+        width: 24px;
+        height: 24px;
+        padding: 15px;
+      }
+
+      textarea[aria-invalid='true'] {
+        border: 2px solid #f00;
+        background-image: url('./automobile.png');
+        background-repeat: no-repeat;
+        background-position: right;
+        min-height: 75px;
+        min-width: 175px;
+      }
+      label {
+        display: block;
+      }
+
+      .Dummy {
+        width: 100px;
+        height: 100px;
+        border: 2px solid;
+        background-image: url('./bath.png');
+        background-repeat: no-repeat;
+        background-position: center;
+      }
+
+      .Beer {
+        background-image: url('./beer.png');
+        background-repeat: no-repeat;
+        background-position: center;
+        width: 24px;
+        height: 24px;
+        padding: 15px;
+      }
+
+      [role='option'] {
+        background-image: url('./id-badge.png');
+        background-repeat: no-repeat;
+        background-position: right;
+        width: 100px;
+        height: 39px;
+        border: 2px solid;
+        padding: 5px;
+      }
+
+      [role='rowheader'] {
+        background-repeat: no-repeat;
+        background-position: right;
+        width: 100px;
+        height: 24px;
+        border: 1px solid;
+      }
+
+      [aria-sort='ascending'] {
+        background-image: url('./angle-up.png');
+      }
+
+      [aria-sort='descending'] {
+        background-image: url('./angle-down.png');
+      }
+
+      [aria-sort='other'] {
+        background-image: url('./apple.png');
+      }
+
+      [aria-sort='none'] {
+        background-image: url('./beer.png');
+      }
+
+      [aria-modal='true'] {
+        background-image: url('./close.png');
+        background-repeat: no-repeat;
+        background-position: top;
+        width: 250px;
+        height: 250px;
+        border: 4px solid #000;
+        border-radius: 10px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+      }
+
+      [role='cell'] {
+        background-color: #f2f2f2;
+        height: 24px;
+        background-image: url('./bath.png');
+        background-repeat: no-repeat;
+        background-position: right;
+      }
+
+      [role='checkbox'] {
+        width: 24px;
+        height: 24px;
+        background-image: url('./check-circle.png');
+        background-repeat: no-repeat;
+        background-position: center;
+        float: left;
+        border: 1px solid;
+        margin-right: 3px;
+        border-radius: 3px;
+        background-color: #f2f2f2;
+      }
+
+      [aria-pressed='true'] {
+        box-shadow: inset 0 0 8px #000;
+      }
+
+      .Blah {
+        background-image: url('./id-badge.png');
+        background-repeat: no-repeat;
+        background-position: center;
+      }
+    </style>
+  </head>
+  <body>
+    <div id="wrapper">
+      <header class="hero is-medium is-info is-bold">
+        <div class="hero-body">
+          <div class="container">
+            <h1 class="title">Images tool test page</h1>
+            <a class="button" href="../index.html">
+              Go home
+            </a>
+          </div>
+        </div>
+      </header>
+      <main>
+        <section class="section">
+          <div class="container">
+            <h3 class="title">Images</h3>
+            <p>
+              <strong>NOTE:</strong>
+              This is simply for testing purposes. Many of
+              these attributes aren't manipulated or on
+              valid elements.
+            </p>
+            <hr />
+            <h4 class="subtitle">Background images</h4>
+            <hr />
+            <button
+              type="button"
+              class="Info button"
+              aria-label="Info"
+              aria-haspopup="true"
+              aria-expanded="false"
+              aria-describedby="hint-1"
+            ></button>
+            <p id="hint-1">foo bar baz</p>
+            <p>
+              Button, aria-haspopup=true,
+              aria-expanded=false. Accessible name: Info,
+              Hint: foo bar baz
+            </p>
+            <hr />
+            <button
+              type="button"
+              class="Info button"
+              aria-label="Other info"
+              aria-expanded="true"
+            ></button>
+            <p>
+              Button, aria-expanded=true. Accessible name:
+              Other info
+            </p>
+            <hr />
+            <label for="automobile">
+              Automobile description
+            </label>
+            <textarea
+              id="automobile"
+              aria-required="true"
+              aria-multiline="true"
+              aria-invalid="true"
+            ></textarea>
+            <p>
+              Textarea, aria-required=true,
+              aria-multiline=true, aria-invalid=true.
+              Accessible name: Automobile description
+            </p>
+            <hr />
+            <div
+              aria-multiselectable="true"
+              aria-readonly="true"
+              aria-disabled="true"
+              class="Dummy"
+            >
+              Foo
+            </div>
+            <p>
+              Div, aria-multiselectable=true
+              aria-readonly=true aria-disabled=true.
+              Accessible name: Foo
+            </p>
+            <hr />
+            <button
+              aria-pressed="true"
+              disabled
+              class="Beer"
+              aria-label="Bar"
+            ></button>
+            <p>
+              Button, disabled (html property). Accessible
+              name: Bar
+            </p>
+          </div>
+          <hr />
+          <div role="option" aria-selected="true">
+            Option 1
+          </div>
+          <p>
+            Div (with role=option) and aria-selected=true.
+            Accessible name: Option 1
+          </p>
+          <hr />
+          <div role="rowheader" aria-sort="ascending">
+            Date
+          </div>
+          <p>
+            Div with role=rowheader, aria-sort=ascending.
+            Accessible name: Date
+          </p>
+          <hr />
+          <div role="rowheader" aria-sort="descending">
+            Date
+          </div>
+          <p>
+            Div with role=rowheader, aria-sort=descending.
+            Accessible name: Date
+          </p>
+          <hr />
+          <div role="rowheader" aria-sort="none">Date</div>
+          <p>
+            Div with role=rowheader, aria-sort=none.
+            Accessible name: Date
+          </p>
+          <hr />
+          <div role="rowheader" aria-sort="other">Date</div>
+          <p>
+            Div with role=rowheader, aria-sort=other.
+            Accessible name: Date
+          </p>
+          <hr />
+          <div aria-modal="true">
+            I am a modal (or something?)
+          </div>
+          <p>
+            Div with aria-modal=true. Accessible name: I am
+            a modal (or something?)
+          </p>
+          <hr />
+          <div role="cell" aria-colspan="2">
+            I am a table cell
+          </div>
+          <p>
+            Div with role=cell and aria-colspan=2.
+            Accessible name: I am a table cell
+          </p>
+          <hr />
+          <div role="cell" aria-rowspan="4">
+            I am a table cell too
+          </div>
+          <p>
+            Div with role=cell and aria-rowspan=4.
+            Accessible name: I am a table cell too
+          </p>
+          <hr />
+          <div aria-busy="true" aria-current="true">
+            I am currently busy
+          </div>
+          <p>
+            Div with aria-busy=true, aria-current=true.
+            Accessible name: I am currently busy
+          </p>
+          <hr />
+          <div
+            role="checkbox"
+            tabindex="0"
+            aria-labelledby="checkbox-label"
+            aria-checked="true"
+            aria-disabled="true"
+          ></div>
+          <div id="checkbox-label">Baz</div>
+          <p>
+            Div with role=checkbox, aria-checked=true,
+            aria-disabled=true. Accessible name: Baz
+          </p>
+          <hr />
+          <label for="required-input">Blah</label>
+          <input
+            type="text"
+            id="required-input"
+            required
+            aria-required="true"
+            class="Blah"
+          />
+          <p>
+            Input with required (html property) AND
+            aria-required=true. Accessible name: Blah
+          </p>
+          <hr />
+          <label for="multiselect">
+            Select multiple things
+          </label>
+          <select id="multiselect" class="Blah" multiple>
+            <option>thing 1</option>
+            <option>thing 2</option>
+            <option>thing 3</option>
+          </select>
+          <p>
+            Select with multiple (html property). Accessible
+            name: Select multiple things
+          </p>
+        </section>
+      </main>
+      <footer class="footer">
+        <div class="content has-text-centered">
+          <p>
+            blah
+            <strong>blah</strong>
+            blah
+            <strong>footer</strong>
+            with a
+            <a href="../index.html">link</a>
+            .
+          </p>
+        </div>
+      </footer>
+    </div>
+  </body>
+</html>

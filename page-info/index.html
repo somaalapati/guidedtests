@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1.0"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/bulma@0.8.0/css/bulma.min.css"
+    />
+    <link
+      href="https://use.fontawesome.com/99d8f1b106.css"
+      media="all"
+      rel="stylesheet"
+    />
+    <title>Page info tool test page</title>
+  </head>
+  <body>
+    <div id="wrapper">
+      <header class="hero is-medium is-info is-bold">
+        <div class="hero-body">
+          <div class="container">
+            <h1 class="title">Page info tool test page</h1>
+            <a class="button" href="../index.html">
+              Go home
+            </a>
+            <a
+              class="button"
+              href="./no-title-no-lang.html"
+            >
+              Go to no title and no lang page
+            </a>
+            <a
+              class="button"
+              href="./invalid-lang-atr.html"
+            >
+              Go to invalid lang attribute page
+            </a>
+            <a class="button" href="./japanese-lang.html">
+              Go to japanese lang attribute page
+            </a>
+            <a class="button" href="./frames.html">
+              Go to frames page
+            </a>
+          </div>
+        </div>
+      </header>
+      <main>
+        <section class="section">
+          <div class="container">
+            <h3 class="title">Iframe</h3>
+            <iframe src="./iframe1.html"></iframe>
+          </div>
+          <hr />
+        </section>
+        <section class="section">
+          <div class="container">
+            <h3 class="title">Nested iframe</h3>
+            <iframe src="./nested-iframe.html"></iframe>
+          </div>
+          <hr />
+        </section>
+      </main>
+      <footer class="footer">
+        <div class="content has-text-centered">
+          <p>
+            blah
+            <strong>blah</strong>
+            blah
+            <strong>footer</strong>
+            with a
+            <a href="../index.html">link</a>
+            .
+          </p>
+        </div>
+      </footer>
+    </div>
+  </body>
+</html>

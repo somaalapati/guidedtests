@@ -1,0 +1,47 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1.0"
+    />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>
+      Dynamic elements (interactive elements testing)
+    </title>
+  </head>
+  <body>
+    <h1>Added elements</h1>
+    <section id="added-elements"></section>
+    <h1>Tabstops</h1>
+    <section style="">
+      <h2>Static</h2>
+      <a href="#">1</a>
+      <a href="#">2</a>
+      <a href="#">3</a>
+      <a href="#">4</a>
+    </section>
+    <h1>Other Tabstops</h1>
+    <section style="">
+      <h2>Static</h2>
+      <a href="#">5</a>
+      <a href="#">6</a>
+      <a href="#">7</a>
+      <a href="#">8</a>
+    </section>
+
+    <script>
+      const dynamicSection = document.querySelector(
+        '#added-elements'
+      )
+      const noscript = document.createElement('noscript')
+      noscript.innerText = 'Dynamic el'
+      // this simulates the behavior on this page https://vicks.com/en-us
+      // it dynamically adds noscript tags while igts/scans run which shifts vnode ids for scoped selections
+      setInterval(() => {
+        dynamicSection.append(noscript.cloneNode(true))
+      }, 800)
+    </script>
+  </body>
+</html>

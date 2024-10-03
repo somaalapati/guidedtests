@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1.0"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/bulma@0.8.0/css/bulma.min.css"
+    />
+    <link
+      href="https://use.fontawesome.com/99d8f1b106.css"
+      media="all"
+      rel="stylesheet"
+    />
+    <title>Structure tool test page (element langs)</title>
+  </head>
+  <body>
+    <div id="wrapper">
+      <header class="hero is-medium is-info is-bold">
+        <div class="hero-body">
+          <div class="container">
+            <h1 class="title">Structure Element Langs</h1>
+            <a class="button" href="../index.html">
+              Go home
+            </a>
+          </div>
+        </div>
+      </header>
+      <main>
+        <section class="section">
+          <div class="container">
+            <h3 class="title">
+              Page with Different languages
+            </h3>
+            <h4 class="title">English(en) for Japanese</h4>
+            <br />
+            <p lang="en">
+              ランダムテキストランダムテキストランダムテキストランダムテキストランダムテキストランダムテキストランダム
+              テキストランダムテキストランダムテキストランダムテキストランダムテキストランダムテキスト
+            </p>
+          </div>
+        </section>
+
+        <section class="section">
+          <div class="container">
+            <h4 class="title">
+              Japanse(ja) given for Japanese
+            </h4>
+            <br />
+            <p lang="ja">
+              ランダムテキストランダムテキストランダムテキストランダムテキストランダムテキストランダムテキストランダム
+              テキストランダムテキストランダムテキストランダムテキストランダムテキストランダムテキスト
+            </p>
+          </div>
+        </section>
+
+        <section class="section">
+          <div class="container">
+            <h4 class="title">English(en) for english</h4>
+            <br />
+            <p lang="en">This is a sample test</p>
+          </div>
+        </section>
+
+        <section class="section">
+          <div class="container">
+            <h4 class="title">Invalid value for english</h4>
+            <br />
+            <p lang="@7(*)65">
+              This is a sample test. This is a sample test.
+              This is a sample test. This is a sample test.
+              This is a sample test
+            </p>
+          </div>
+        </section>
+
+        <section class="section">
+          <div class="container">
+            <h4 class="title">
+              No lang attribute given for language change
+            </h4>
+            <br />
+            <p>
+              ランダムテキストランダムテキストランダムテキストランダムテキストランダムテキストランダムテキストランダム
+              テキストランダムテキストランダムテキストランダムテキストランダムテキストランダムテキスト
+            </p>
+          </div>
+        </section>
+
+        <section class="section">
+          <div class="container">
+            <h4 class="title">
+              Japanse(ja) given for empty paragraphs
+            </h4>
+            <br />
+            <p lang="ja"></p>
+            <p lang="ja">&nbsp;</p>
+          </div>
+        </section>
+      </main>
+      <footer class="footer">
+        <div class="content has-text-centered">
+          <p>
+            blah
+            <strong>blah</strong>
+            blah
+            <strong>footer</strong>
+            with a
+            <a href="../index.html">link</a>
+            .
+          </p>
+        </div>
+      </footer>
+    </div>
+  </body>
+</html>

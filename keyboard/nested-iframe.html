@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1.0"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/bulma@0.8.0/css/bulma.min.css"
+    />
+    <title>Nested - iframe</title>
+    <style>
+      .focus-missing button:focus,
+      .focus-missing a:focus {
+        outline: 0;
+        box-shadow: none !important;
+      }
+
+      .container h3.title {
+        font-size: 3rem;
+      }
+
+      .fake-btn {
+        text-decoration: underline;
+      }
+    </style>
+  </head>
+  <body>
+    <section class="section">
+      <div class="container">
+        <div class="focus-missing">
+          <h4 class="title">focus-indicator-missing</h4>
+          <a href="#">I have no focus indication</a>
+          <button>Neither do I</button>
+          <button class="button is-light">
+            Me neither!
+          </button>
+        </div>
+      </div>
+      <hr />
+    </section>
+    <section class="section">
+      <div class="container">
+        <h4 class="title">
+          Tab-stop-without-interactive-role
+        </h4>
+        <p class="subtitle">
+          The following element has
+          <code>tabindex="0"</code>
+          but no role (and it is not a scrollable region)
+        </p>
+        <div
+          class="button"
+          onclick="alert('hi')"
+          tabindex="0"
+        >
+          Click me!
+        </div>
+      </div>
+      <hr />
+    </section>
+    <section class="section">
+      <div class="container">
+        <h4 class="title">
+          User-selected missing tab stop
+        </h4>
+        <p class="subtitle">
+          Select the following element on the question
+          <em>
+            Are there any elements that you expected to be
+            in the tab order but were not?
+          </em>
+        </p>
+        <div class="fake-btn" onclick="alert('hi')">
+          I should be a tab stop but no one knows it!
+        </div>
+      </div>
+      <hr />
+    </section>
+    <section class="section">
+      <div class="container">
+        <h4 class="title">
+          Button taken out of tab order via
+          <code>[tabindex="-1"]</code>
+        </h4>
+        <button tabindex="-1">
+          I am skipped in the tab order and there is no
+          keyboard alternative
+        </button>
+      </div>
+      <hr />
+    </section>
+  </body>
+</html>

@@ -1,0 +1,220 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1.0"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/bulma@0.8.0/css/bulma.min.css"
+    />
+    <link
+      href="https://use.fontawesome.com/99d8f1b106.css"
+      media="all"
+      rel="stylesheet"
+    />
+    <title>Headings tool test page</title>
+  </head>
+  <body>
+    <div id="wrapper">
+      <header class="hero is-medium is-info is-bold">
+        <div class="hero-body">
+          <div class="container">
+            <h1 class="title">Headings tool test page</h1>
+            <a class="button" href="../index.html">
+              Go home
+            </a>
+            <a class="button" href="./no-headings.html">
+              Go to no headings page
+            </a>
+          </div>
+        </div>
+      </header>
+      <main>
+        <section class="section">
+          <div class="container">
+            <h3 class="title">Stuff</h3>
+            <p>
+              Lorem ipsum dolor amet tofu tilde ethical deep
+              v flannel raw denim skateboard authentic. Tote
+              bag wolf enamel pin portland williamsburg.
+              Readymade forage iceland occupy, shaman cronut
+              migas +1 snackwave austin organic narwhal
+              retro subway tile four loko. Enamel pin
+              heirloom mustache, 8-bit bicycle rights kale
+              chips trust fund twee edison bulb.
+            </p>
+          </div>
+          <hr />
+        </section>
+        <section class="section">
+          <div class="container">
+            <h3 class="title">Stuff</h3>
+            <p>
+              Ugh pinterest selvage, flannel PBR&B YOLO
+              whatever chicharrones williamsburg flexitarian
+              chartreuse. Viral cardigan fashion axe,
+              try-hard tote bag cloud bread paleo yuccie
+              readymade semiotics forage. Pickled irony
+              drinking vinegar plaid put a bird on it,
+              messenger bag humblebrag truffaut. Adaptogen
+              austin lo-fi vice, tofu roof party chambray
+              iceland. Chambray woke austin, plaid YOLO
+              trust fund asymmetrical art party.
+            </p>
+          </div>
+          <hr />
+        </section>
+        <section class="section">
+          <div class="container">
+            <div class="title">
+              I look like a heading but am not one!
+            </div>
+            <p>
+              Thundercats knausgaard 8-bit lumbersexual
+              distillery poke occupy sartorial air plant,
+              vegan 90's meditation food truck lomo cray.
+              Four dollar toast synth cornhole 3 wolf moon,
+              artisan taxidermy vape adaptogen jean shorts
+              subway tile. Readymade tumblr DIY, irony
+              keytar kitsch pinterest tote bag drinking
+              vinegar portland organic disrupt pork belly
+              kogi. Literally hashtag freegan, kombucha swag
+              blog cred jean shorts man bun four loko vape
+              hot chicken church-key cray 90's. Pabst 3 wolf
+              moon selvage marfa franzen venmo, YOLO
+              mumblecore four dollar toast selfies vinyl
+              fixie succulents live-edge drinking vinegar.
+            </p>
+            <br />
+            <h3>
+              <strong>
+                I am marked up as a heading but should not
+                be!
+              </strong>
+            </h3>
+            <br />
+            <p>
+              Letterpress kombucha subway tile la croix
+              sriracha. Austin fashion axe keffiyeh street
+              art hot chicken hexagon poutine shaman put a
+              bird on it man bun kale chips tousled plaid.
+              Poutine chambray vaporware, +1 vinyl
+              post-ironic small batch kogi wayfarers vape
+              kombucha pok pok direct trade. Chartreuse
+              gochujang schlitz synth tacos before they sold
+              out, hexagon art party knausgaard VHS. Air
+              plant occupy quinoa vexillologist scenester
+              unicorn organic letterpress. Umami literally
+              ennui heirloom edison bulb. Forage occupy
+              quinoa, readymade messenger bag tacos fashion
+              axe organic tumeric adaptogen meditation
+              portland vaporware pabst.
+            </p>
+          </div>
+          <hr />
+        </section>
+        <section class="section">
+          <div class="container">
+            <div class="title">
+              Below are headings with all valid headings
+              mark up with (h) tags
+            </div>
+            <h1>Heading with level 1</h1>
+            <h2>Heading with level 2</h2>
+            <h3>Heading with level 3</h3>
+            <h4>Heading with level 4</h4>
+            <h5>Heading with level 5</h5>
+            <h6>Headion with level 6</h6>
+          </div>
+          <hr />
+        </section>
+        <section class="section">
+          <div class="container">
+            <div class="title">
+              Below are ARIA headings mark up with
+              role="heading" tags
+            </div>
+            <div role="heading" aria-level="1">
+              Aria-level 1 heading
+            </div>
+            <div role="heading" aria-level="6">
+              Aria-level 6 heading
+            </div>
+            <div role="heading" aria-level="-1">
+              Aria-level -1 heading
+            </div>
+            <div role="heading" aria-level="0">
+              Aria-level 0 heading
+            </div>
+            <div role="heading" aria-level="7">
+              Aria-level 7 heading
+            </div>
+            <div role="heading" aria-level="abcd">
+              Aria-level abcd heading
+            </div>
+            <div role="heading" aria-level="&%">
+              Aria-level &% heading
+            </div>
+          </div>
+          <hr />
+        </section>
+        <section class="section">
+          <div class="container">
+            <div class="title">
+              Headings without accessible text
+            </div>
+            <h1></h1>
+            <p role="heading" aria-level="1"></p>
+          </div>
+          <hr />
+        </section>
+        <section class="section">
+          <div class="container">
+            <div class="title">Iframe with headings</div>
+            <iframe src="./frame.html"></iframe>
+          </div>
+          <hr />
+        </section>
+        <section class="section">
+          <div class="container">
+            <h2 class="title">shadow DOM with headings</h2>
+            <div id="shadow_root"></div>
+          </div>
+          <hr />
+        </section>
+      </main>
+      <footer class="footer">
+        <div class="content has-text-centered">
+          <p>
+            blah
+            <strong>blah</strong>
+            blah
+            <strong>footer</strong>
+            with a
+            <a href="../index.html">link</a>
+            .
+          </p>
+        </div>
+      </footer>
+    </div>
+    <script>
+      /**
+       * Shadow DOM with headings
+       */
+      const shadowRoot =
+        document.getElementById('shadow_root')
+      const shadow = shadowRoot.attachShadow({
+        mode: 'open'
+      })
+      const shadowHeading1 = document.createElement('h1')
+      shadowHeading1.innerHTML = 'Shadow Heading 1'
+      const shadowHeading2 = document.createElement('h6')
+      shadowHeading2.innerHTML = 'Shadow Heading 6'
+      shadow.append(shadowHeading1)
+      shadow.append(shadowHeading2)
+    </script>
+  </body>
+</html>

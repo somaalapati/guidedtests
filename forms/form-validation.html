@@ -1,0 +1,257 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1.0"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/bulma@0.8.0/css/bulma.min.css"
+    />
+    <link
+      href="https://use.fontawesome.com/99d8f1b106.css"
+      media="all"
+      rel="stylesheet"
+    />
+    <title>Form validation test page</title>
+  </head>
+
+  <body>
+    <div id="wrapper">
+      <header class="hero is-medium is-info is-bold">
+        <div class="hero-body">
+          <div class="container">
+            <h1 class="title">Form validation test page</h1>
+            <a class="button" href="../index.html">
+              Go home
+            </a>
+          </div>
+        </div>
+      </header>
+      <main>
+        <section class="section">
+          <div class="container">
+            <h3 class="title">
+              Form with different types of input fields
+            </h3>
+            <form
+              id="simple-form"
+              name="simple"
+              onsubmit="validate(event)"
+            >
+              <div>
+                <label for="first-name">
+                  First Name (Required, letters only)
+                </label>
+                <input
+                  id="first-name"
+                  name="first-name"
+                  type="text"
+                  aria-describedby="first-name-error"
+                />
+                <p id="first-name-error"></p>
+              </div>
+              <br />
+              <div>
+                <label for="last-name">
+                  Last Name (Aria Required)
+                </label>
+                <input
+                  id="last-name"
+                  name="last-name"
+                  type="text"
+                  aria-required="true"
+                />
+              </div>
+              <br />
+              <div>
+                <fieldset>
+                  <legend>Favorite Candy (Required)</legend>
+                  <input
+                    id="favorite-candy-snickers"
+                    type="radio"
+                    name="favorite-candy"
+                    value="snickers"
+                    aria-describedby="favorite-candy-error"
+                  />
+                  <label for="favorite-candy-snickers">
+                    Snickers
+                  </label>
+                  <input
+                    id="favorite-candy-almond-joy"
+                    type="radio"
+                    name="favorite-candy"
+                    value="almond-joy"
+                  />
+                  <label for="favorite-candy-almond-joy">
+                    Almond Joy
+                  </label>
+                  <p id="favorite-candy-error"></p>
+                </fieldset>
+              </div>
+              <br />
+              <div>
+                <fieldset>
+                  <legend>
+                    Favorite Soda (Aria Required)
+                  </legend>
+                  <input
+                    id="favorite-soda-pepsi"
+                    type="radio"
+                    name="favorite-soda"
+                    value="pepsi"
+                    aria-required="true"
+                  />
+                  <label for="favorite-soda-pepsi">
+                    Pepsi
+                  </label>
+                  <input
+                    id="favorite-soda-coke"
+                    type="radio"
+                    name="favorite-soda"
+                    value="coke"
+                  />
+                  <label for="favorite-soda-coke">
+                    Coke
+                  </label>
+                </fieldset>
+              </div>
+              <br />
+              <div>
+                <fieldset>
+                  <legend>
+                    Favorite Cuisine (Required)
+                  </legend>
+                  <input
+                    id="favorite-cuisine-italian"
+                    type="checkbox"
+                    name="favorite-cuisine"
+                    value="italian"
+                    aria-describedby="favorite-cuisine-error"
+                  />
+                  <label for="favorite-cuisine-italian">
+                    Italian
+                  </label>
+                  <input
+                    id="favorite-cuisine-chineese"
+                    type="checkbox"
+                    name="favorite-cuisine"
+                    value="chineese"
+                  />
+                  <label for="favorite-cuisine-chineese">
+                    Chinese
+                  </label>
+                  <p id="favorite-cuisine-error"></p>
+                </fieldset>
+              </div>
+              <br />
+              <div>
+                <fieldset>
+                  <legend>
+                    Favorite Genre (Aria Required)
+                  </legend>
+                  <input
+                    id="favorite-genre-scifi"
+                    type="radio"
+                    name="favorite-genre"
+                    value="scifi"
+                    aria-required="true"
+                  />
+                  <label for="favorite-genre-scifi">
+                    Scifi
+                  </label>
+                  <input
+                    id="favorite-genre-horror"
+                    type="radio"
+                    name="favorite-genre"
+                    value="horror"
+                  />
+                  <label for="favorite-genre-horror">
+                    Horror
+                  </label>
+                </fieldset>
+              </div>
+              <br />
+              <div>
+                <label for="favorite-day">
+                  Favorite Day (Aria Required with default
+                  value)
+                </label>
+                <br />
+                <select
+                  id="favorite-day"
+                  name="favorite-day"
+                  aria-required="true"
+                >
+                  <option value="sunday">Sunday</option>
+                  <option value="monday">Monday</option>
+                  <option value="tuesday">Tuesday</option>
+                  <option value="wednesday">
+                    Wednesday
+                  </option>
+                  <option value="thursday">Thursday</option>
+                  <option value="friday">Friday</option>
+                  <option value="saturday">Saturday</option>
+                </select>
+              </div>
+              <br />
+              <button type="submit">Submit</button>
+            </form>
+          </div>
+          <hr />
+        </section>
+      </main>
+      <footer class="footer">
+        <div class="content has-text-centered">
+          <p>
+            blah
+            <strong>blah</strong>
+            blah
+            <strong>footer</strong>
+          </p>
+        </div>
+      </footer>
+    </div>
+    <script>
+      //Form validation code
+      function validate(event) {
+        event.preventDefault()
+        const letters = /^[A-Za-z]+$/
+        const form = new FormData(event.target)
+
+        const firstNameError = document.getElementById(
+          'first-name-error'
+        )
+        const favoriteCandyError = document.getElementById(
+          'favorite-candy-error'
+        )
+        const favoriteCuisineError =
+          document.getElementById('favorite-cuisine-error')
+
+        firstNameError.innerText = ''
+        favoriteCandyError.innerText = ''
+        favoriteCuisineError.innerText = ''
+
+        if (!form.get('first-name')) {
+          firstNameError.innerText =
+            'First name is required'
+        } else if (!letters.test(form.get('first-name'))) {
+          firstNameError.innerText =
+            'First name must only contain letters'
+        }
+
+        if (!form.get('favorite-candy')) {
+          favoriteCandyError.innerText =
+            'Favorite candy is required'
+        }
+
+        if (!form.get('favorite-cuisine')) {
+          favoriteCuisineError.innerText =
+            'Favorite cuisine is required'
+        }
+      }
+    </script>
+  </body>
+</html>

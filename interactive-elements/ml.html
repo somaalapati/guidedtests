@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1.0"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/bulma@0.8.0/css/bulma.min.css"
+    />
+    <title>interactive elements tool test page</title>
+    <style>
+      main {
+        text-align: center;
+      }
+
+      .ie {
+        margin: 2em auto;
+      }
+
+      .ie p {
+        margin-top: 1.3em;
+      }
+
+      #nameless-non-widget {
+        background-image: url('../images/beer.png');
+        width: 24px;
+        height: 24px;
+        margin: 0 auto;
+      }
+    </style>
+  </head>
+  <body>
+    <div id="wrapper">
+      <header class="hero is-medium is-info is-bold">
+        <div class="hero-body">
+          <div class="container">
+            <h1 class="title">ML Predictions page</h1>
+            <a class="button" href="../index.html">
+              Go home
+            </a>
+          </div>
+        </div>
+      </header>
+      <main>
+        <div id="nameless-non-widget"></div>
+        <div class="ie" role="button">
+          <div class="button">I look like a button</div>
+          <p>
+            but this fake button is wrapped in a
+            [role=button] and should be filtered out as an
+            ML preselection
+          </p>
+        </div>
+
+        <div class="ie">
+          <button class="button" role="alert">
+            I am a button
+          </button>
+        </div>
+
+        <div class="ie">
+          <div class="button">I am fake button</div>
+        </div>
+      </main>
+      <footer class="footer">
+        <div class="content has-text-centered">
+          <p>
+            blah
+            <strong>blah</strong>
+            blah
+            <strong>footer</strong>
+          </p>
+        </div>
+      </footer>
+    </div>
+    <script></script>
+  </body>
+</html>

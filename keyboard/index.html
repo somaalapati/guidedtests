@@ -1,0 +1,505 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1.0"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/bulma@0.8.0/css/bulma.min.css"
+    />
+    <title>Keyboard tool test page</title>
+    <style>
+      .focus-missing button:focus,
+      .focus-missing a:focus {
+        outline: 0;
+        box-shadow: none !important;
+      }
+
+      .container h3.title {
+        font-size: 3rem;
+      }
+
+      .focus-insufficient .insufficient-small:focus {
+        outline: 2px solid #f92089;
+      }
+
+      .focus-insufficient .insufficient-large:focus {
+        outline: 4px solid #ccc;
+      }
+
+      .focus-insufficient .sufficient-small:focus {
+        outline: 2px dotted #000;
+      }
+
+      .focus-insufficient .sufficient-large:focus {
+        outline: 4px solid #f92089;
+      }
+
+      .fake-btn {
+        text-decoration: underline;
+      }
+
+      .combobo {
+        max-height: 100px;
+        max-width: 300px;
+        overflow: auto;
+      }
+
+      .panel {
+        display: none;
+        padding: 1em;
+        border: 1px dashed #000;
+      }
+
+      .panel.active {
+        display: block;
+      }
+
+      [role='tablist'] {
+        display: flex;
+      }
+
+      [role='tab'] {
+        padding: 5px;
+        margin: 5px;
+      }
+
+      [role='tab'][tabindex='0'] {
+        border-bottom: 3px solid;
+      }
+
+      .obscured {
+        position: relative;
+      }
+
+      .obscured button {
+        position: absolute;
+        margin: 10px;
+      }
+
+      .animated button:focus {
+        outline: none;
+        transition-duration: 0.35s;
+        transition-property: background, box-shadow,
+          border-color;
+        transition-delay: 0.15s;
+        transition-timing-function: ease-in;
+        background: #f1f1f1;
+        border-color: #000;
+        box-shadow: 0 0 0 3px #3b99fc !important;
+      }
+
+      .obscured div {
+        padding: 30px 0;
+        position: relative;
+        z-index: 1;
+        background-color: #fff;
+      }
+    </style>
+  </head>
+  <body>
+    <header class="hero is-medium is-info is-bold">
+      <div class="hero-body">
+        <div class="container">
+          <h1 class="title">Keyboard tool test page</h1>
+          <h2 class="subtitle">
+            Run the axe Pro keyboard tool on this page. The
+            expected issues are documented throughout the
+            page...
+          </h2>
+          <a class="button" href="../index.html">Go home</a>
+          <a class="button" href="./no-tab-stops.html">
+            Go to 0 tab stop page
+          </a>
+          <a class="button" href="./iframes.html">
+            Go to iframes page
+          </a>
+        </div>
+      </div>
+    </header>
+    <main>
+      <section class="section">
+        <form id="form1" onsubmit="return false"></form>
+        <form
+          id="form2"
+          action="#"
+          onsubmit="return false"
+        ></form>
+        <div class="container">
+          <h3 class="title">Focus indication</h3>
+          <p class="subtitle">
+            This section contains focus indication issues.
+          </p>
+          <div class="focus-missing">
+            <h4 class="title">focus-indicator-missing</h4>
+            <a href="#">I have no focus indication</a>
+            <button id="foo">Neither do I</button>
+            <button class="button is-light">
+              Me neither!
+            </button>
+          </div>
+          <div class="focus-insufficient">
+            <h4 class="title">focus-not-clearly-visible</h4>
+            <a href="#" class="insufficient-small">
+              Insufficient contrast, less than 3px (3.75:1)
+            </a>
+            <br />
+            <a href="#" class="insufficient-large">
+              Insufficient contrast, greater than 3px
+              (1.61:1)
+            </a>
+            <br />
+            <a href="#" class="sufficient-small">
+              Sufficient contrast, less than 3px (21.00:1)
+            </a>
+            <br />
+            <a href="#" class="sufficient-large">
+              Sufficient contrast, greater than 3px (3.75:1)
+            </a>
+          </div>
+        </div>
+        <hr />
+      </section>
+      <section class="section">
+        <div class="container">
+          <h3 class="title">
+            Tab stop without interactive role
+          </h3>
+          <p class="subtitle">
+            The following element has
+            <code>tabindex="0"</code>
+            but no role (and it is not a scrollable region)
+          </p>
+          <div
+            class="button"
+            onclick="alert('hi')"
+            tabindex="0"
+          >
+            Click me!
+          </div>
+        </div>
+        <hr />
+      </section>
+      <section class="section">
+        <div class="container">
+          <h3 class="title">
+            User-selected missing tab stop
+          </h3>
+          <p class="subtitle">
+            Select the following element on the question
+            <em>
+              Are there any elements that you expected to be
+              in the tab order but were not?
+            </em>
+          </p>
+          <div class="fake-btn" onclick="alert('hi')">
+            I should be a tab stop but no one knows it!
+          </div>
+        </div>
+        <hr />
+      </section>
+      <section class="section">
+        <div class="container">
+          <h3 class="title">
+            Button taken out of tab order via
+            <code>[tabindex="-1"]</code>
+          </h3>
+          <button tabindex="-1">
+            I am skipped in the tab order and there is no
+            keyboard alternative
+          </button>
+        </div>
+        <hr />
+      </section>
+      <section class="section">
+        <div class="container">
+          <h3 class="title">
+            non-widget/region role focusable element
+          </h3>
+          <pre
+            role="img"
+            aria-label="Combobo Gorilla"
+            class="combobo"
+            tabindex="0"
+          >
+               ."`".
+           .-./ _=_ \.-.
+          {  (,(oYo),) }}
+          {{ |   "   |} }
+          { { \(---)/  }}
+          {{  }'-=-'{ } }
+          { { }._:_.{  }}
+          {{  } -:- { } }
+          {_{ }`===`{  _}
+          ((((\)     (/))))
+              </pre
+          >
+        </div>
+        <hr />
+      </section>
+      <section class="section">
+        <div class="container">
+          <h2 class="title is-medium">
+            <em>NOTE:</em>
+            this exposes the fact that axe-core considers a
+            "heading" a widget role.
+            <a
+              href="https://github.com/dequelabs/axe-core/pull/1882"
+            >
+              see dequelabs/axe-core#1882
+            </a>
+          </h2>
+          <div class="accordion">
+            <div class="item">
+              <h3 tabindex="0">item 1</h3>
+              <div class="panel active">
+                I am some panel content!
+              </div>
+            </div>
+            <div class="item">
+              <h3 tabindex="0">item 2</h3>
+              <div class="panel">
+                I am also some panel content.
+              </div>
+            </div>
+            <div class="item">
+              <h3 tabindex="0">item 3</h3>
+              <div class="panel">
+                I too am some panel content?
+              </div>
+            </div>
+          </div>
+        </div>
+        <hr />
+      </section>
+      <section class="section">
+        <div class="container">
+          <h2 class="title is-medium">
+            Proper(ish) aria tabs
+          </h2>
+          <ul role="tablist" aria-label="fake tabs">
+            <li
+              role="tab"
+              tabindex="0"
+              aria-controls="panel1"
+              aria-selected="true"
+            >
+              Tab 1
+            </li>
+            <li
+              role="tab"
+              tabindex="-1"
+              aria-controls="panel2"
+            >
+              Tab 2
+            </li>
+          </ul>
+          <div class="panels">
+            <div
+              class="panel active"
+              role="tabpanel"
+              id="panel1"
+            >
+              Panel 1
+            </div>
+            <div class="panel" role="tabpanel" id="panel2">
+              Panel 2
+            </div>
+          </div>
+        </div>
+        <hr />
+      </section>
+      <section class="section">
+        <div class="container">
+          <h2 class="title is-medium">iframe</h2>
+          <iframe src="./frame1.html"></iframe>
+        </div>
+        <hr />
+      </section>
+      <section class="section">
+        <div class="container">
+          <h2 class="title is-medium">shadow DOM (open)</h2>
+          <div id="shadow-root"></div>
+        </div>
+        <hr />
+      </section>
+      <section class="section">
+        <div class="container">
+          <h2 class="title is-medium">
+            focus-on-hidden-item
+          </h2>
+          <p class="subtitle">
+            Below are some aria-hidden tab stops for testing
+            (focus on hidden item) issue
+          </p>
+          <div aria-hidden="true">
+            <details>
+              <summary>Some button</summary>
+              <p>Some details</p>
+            </details>
+            <p tabindex="0">Some text</p>
+            <a
+              href="/"
+              style="position: absolute; top: -999em"
+            >
+              Link
+            </a>
+            <input aria-disabled="true" />
+          </div>
+          <button aria-hidden="true">Tab stop</button>
+        </div>
+        <hr />
+      </section>
+      <section class="section">
+        <div class="container">
+          <h2 class="title is-medium">obscured focus</h2>
+          <p class="subtitle">
+            Below is a tab stop that is obscured by another
+            element
+          </p>
+          <div class="obscured">
+            <button>I'm an obscured focus target</button>
+            <div>
+              There's an obscured focus target behind me,
+              but you don't know it
+            </div>
+          </div>
+        </div>
+      </section>
+      <section class="section">
+        <div class="container">
+          <h2 class="title is-medium">animated focus</h2>
+          <p class="subtitle">
+            Below is a tab stop that has a focus animation.
+          </p>
+          <div class="animated">
+            <button class="button">
+              I have a focus animation
+            </button>
+          </div>
+        </div>
+      </section>
+    </main>
+    <footer class="footer">
+      <div class="content has-text-centered">
+        <p>
+          blah
+          <strong>blah</strong>
+          blah
+          <strong>footer</strong>
+          with a
+          <a href="../index.html">link</a>
+          .
+        </p>
+      </div>
+    </footer>
+    <script>
+      const all = selector => [
+        ...document.querySelectorAll(selector)
+      ]
+      // Accordion
+      const clickHeads = all('.item h3')
+      const panels = all('.item .panel')
+
+      clickHeads.forEach((head, i) => {
+        head.addEventListener('click', () => {
+          panels.forEach((p, pIndex) => {
+            const method = i === pIndex ? 'add' : 'remove'
+            p.classList[method]('active')
+          })
+        })
+
+        head.addEventListener('keydown', e => {
+          if (
+            e.which === 37 ||
+            e.which === 38 ||
+            e.which === 39 ||
+            e.which === 40
+          ) {
+            alert('Arrows ===^v<>!')
+          }
+
+          if (e.which !== 13 && e.which !== 32) {
+            return
+          }
+          e.preventDefault()
+          head.click()
+        })
+
+        // Tabpanel
+        const tabs = all('[role=tab]')
+        const [panel1, panel2] = all('[role=tabpanel]')
+        const [tab1, tab2] = tabs
+
+        tabs.forEach((tab, i) => {
+          const otherTab = i === 0 ? tab2 : tab1
+          const thisPanel = i === 0 ? panel1 : panel2
+          const otherPanel =
+            thisPanel === panel1 ? panel2 : panel1
+          tab.addEventListener('click', () => {
+            tab.tabIndex = 0
+            otherTab.tabIndex = -1
+
+            tab.setAttribute('aria-selected', 'true')
+            otherTab.setAttribute('aria-selected', 'false')
+
+            thisPanel.classList.add('active')
+            otherPanel.classList.remove('active')
+          })
+
+          tab.addEventListener('keydown', e => {
+            if (e.which < 37 || e.which > 40) {
+              return
+            }
+            e.preventDefault()
+
+            otherTab.click()
+            otherTab.focus()
+          })
+        })
+      })
+
+      const form1 = document.getElementById('form1')
+      const form2 = document.getElementById('form2')
+      const button = document.getElementById('foo')
+
+      form1.addEventListener('submit', e => {
+        e.preventDefault()
+      })
+
+      form2.addEventListener('submit', e => {
+        e.preventDefault()
+      })
+
+      button.addEventListener('focus', () => {
+        // TODO: update this to `.submit()` when we implement https://github.com/dequelabs/axe-extension/issues/1004
+        form1.requestSubmit()
+      })
+
+      button.addEventListener('blur', () => {
+        form2.requestSubmit()
+      })
+
+      /**
+       * Shadow DOM Example
+       */
+      const shadowRoot =
+        document.getElementById('shadow-root')
+      const shadow = shadowRoot.attachShadow({
+        mode: 'open'
+      })
+      // create a shadow button
+      const shadowButton1 = document.createElement('button')
+      shadowButton1.innerHTML = 'Shadow stop 1'
+      // create another shadow button
+      const shadowButton2 = document.createElement('button')
+      shadowButton2.innerHTML = 'Shadow stop 2'
+      // add the buttons to the shadow DOM
+      shadow.appendChild(shadowButton1)
+      shadow.appendChild(shadowButton2)
+    </script>
+  </body>
+</html>

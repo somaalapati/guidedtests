@@ -1,0 +1,189 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1.0"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/bulma@0.8.0/css/bulma.min.css"
+    />
+    <link
+      href="https://use.fontawesome.com/99d8f1b106.css"
+      media="all"
+      rel="stylesheet"
+    />
+    <title>Lists tool test page</title>
+  </head>
+  <body>
+    <div id="wrapper">
+      <header class="hero is-medium is-info is-bold">
+        <div class="hero-body">
+          <div class="container">
+            <h1 class="title">Lists tool test page</h1>
+            <a class="button" href="../index.html">
+              Go home
+            </a>
+            <a class="button" href="./no-lists.html">
+              Go to no lists page
+            </a>
+          </div>
+        </div>
+      </header>
+      <main>
+        <section class="section">
+          <div class="container">
+            <h3 class="title">
+              Some lists with no list markup for list items
+            </h3>
+            <div>
+              <span>1. Dell</span>
+              <span>2. Intel</span>
+              <span>3. Lenovo</span>
+              <span>4. Microsoft</span>
+            </div>
+          </div>
+          <hr />
+        </section>
+        <section class="section">
+          <div class="container">
+            <h3 class="title">
+              Below is list with ordered list (ol tags)
+            </h3>
+            <p>
+              There are three main types of lists in HTML
+            </p>
+            <ol>
+              <li>Unordered lists</li>
+              <li>Ordered lists</li>
+              <li>
+                Definition lists (or Description lists in
+                HTML5)
+              </li>
+            </ol>
+          </div>
+          <hr />
+        </section>
+        <section class="section">
+          <div class="container">
+            <h3 class="title">
+              Below is list with unordered list (ul tags)
+            </h3>
+            <p>
+              Content is not a list but it is marked as
+              such.
+            </p>
+            <ul>
+              <li>
+                Business News has the latest business
+                updates from India and abroad. Cinema News
+                tracks the latest from Bollywood, Hollywood
+                and the South film industries and TV
+                channels. Sports News has all the sports
+                from India and abroad with a special focus
+                on cricket. Lifestyle News presents
+                developments that impact one's lifestyle.
+              </li>
+            </ul>
+          </div>
+          <hr />
+        </section>
+        <section class="section">
+          <div class="container">
+            <h4 class="title">
+              Below is list with definition lists (dl tags)
+              (or Description lists in HTML5)
+            </h4>
+            <dl>
+              <dt>Coffee</dt>
+              <dd>Black hot drink</dd>
+              <dt>Milk</dt>
+              <dd>White cold drink</dd>
+            </dl>
+          </div>
+          <hr />
+        </section>
+        <section class="section">
+          <div class="container">
+            <h4 class="title">
+              Below is list with ARIA lists (role = "list" )
+            </h4>
+            <section role="list">
+              <div role="listitem">List item 1</div>
+              <div role="listitem">List item 2</div>
+              <div role="listitem">List item 3</div>
+            </section>
+          </div>
+          <hr />
+        </section>
+        <section class="section">
+          <div class="container">
+            <h4 class="title">Below is nested list</h4>
+            <ol>
+              <li>Coffee</li>
+              <li>
+                Tea
+                <ol type="i">
+                  <li>Black tea</li>
+                  <li>Green tea</li>
+                </ol>
+              </li>
+              <li>Milk</li>
+            </ol>
+          </div>
+          <hr />
+        </section>
+        <section class="section">
+          <div class="container">
+            <div class="title">Iframe with lists</div>
+            <iframe src="./frame.html"></iframe>
+          </div>
+          <hr />
+        </section>
+        <section class="section">
+          <div class="container">
+            <h2 class="title">shadow DOM with lists</h2>
+            <div id="shadow_root"></div>
+          </div>
+          <hr />
+        </section>
+      </main>
+      <footer class="footer">
+        <div class="content has-text-centered">
+          <p>
+            blah
+            <strong>blah</strong>
+            blah
+            <strong>footer</strong>
+            with a
+            <a href="../index.html">link</a>
+            .
+          </p>
+        </div>
+      </footer>
+    </div>
+    <script>
+      /**
+       * Shadow DOM with lists
+       */
+      const shadowRoot =
+        document.getElementById('shadow_root')
+      const shadow = shadowRoot.attachShadow({
+        mode: 'open'
+      })
+      const shadowList = document.createElement('ol')
+      const listElement1 = document.createElement('li')
+      listElement1.innerHTML = 'Shadow list 1'
+      const listElement2 = document.createElement('li')
+      listElement2.innerHTML = 'Shadow list 2'
+      const listElement3 = document.createElement('li')
+      listElement3.innerHTML = 'Shadow list 3'
+      shadowList.append(listElement1)
+      shadowList.append(listElement2)
+      shadowList.append(listElement3)
+      shadow.appendChild(shadowList)
+    </script>
+  </body>
+</html>

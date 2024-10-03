@@ -1,0 +1,67 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1.0"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/bulma@0.8.0/css/bulma.min.css"
+    />
+    <title>Keyboard tool test page for iframes</title>
+  </head>
+  <body>
+    <header class="hero is-medium is-info is-bold">
+      <div class="hero-body">
+        <div class="container">
+          <h1 class="title">
+            Keyboard tool test page for iframes
+          </h1>
+          <h2 class="subtitle">
+            Run the axe Beta keyboard tool on this page. The
+            expected issues are documented throughout the
+            page...
+          </h2>
+          <a class="button" href="./index.html">
+            Go to keyboard tool test home page
+          </a>
+          <a
+            class="button"
+            href="./cross-origin-iframes.html"
+          >
+            Go to cross origin iframes page (local only)
+          </a>
+        </div>
+      </div>
+    </header>
+    <main>
+      <section class="section">
+        <div class="container">
+          <h3 class="title">iframe and nested iframe</h3>
+          <iframe
+            src="./frame2.html"
+            width="700"
+            and
+            height="700"
+          ></iframe>
+        </div>
+        <hr />
+      </section>
+    </main>
+    <footer class="footer">
+      <div class="content has-text-centered">
+        <p>
+          blah
+          <strong>blah</strong>
+          blah
+          <strong>footer</strong>
+          with a
+          <a href="../index.html">link</a>
+          .
+        </p>
+      </div>
+    </footer>
+  </body>
+</html>

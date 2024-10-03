@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1.0"
+    />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>Dynamic tabstops (keyboard tool testing)</title>
+    <style>
+      section {
+        height: 130vh;
+        display: flex;
+        justify-content: space-between;
+        flex-direction: column;
+      }
+    </style>
+  </head>
+  <body>
+    <h1>Dynamic tabstops</h1>
+    <section style="">
+      <h2>Static</h2>
+      <a href="#">1</a>
+      <a href="#">2</a>
+      <a href="#">3</a>
+      <a href="#">4</a>
+    </section>
+    <section id="dynamic">
+      <h2>Dynamic</h2>
+    </section>
+    <script>
+      let inserted = false
+      const dynamicSection =
+        document.querySelector('#dynamic')
+      const observer = new IntersectionObserver(
+        e => {
+          if (inserted || !e[0].isIntersecting) {
+            return
+          }
+
+          inserted = true
+          const a = document.createElement('a')
+          a.href = '#'
+          a.innerText = 'Dynamic link'
+          dynamicSection.append(
+            a,
+            a.cloneNode(true),
+            a.cloneNode(true),
+            a.cloneNode(true)
+          )
+        },
+        { threshold: 0.1 }
+      )
+      observer.observe(dynamicSection)
+    </script>
+  </body>
+</html>

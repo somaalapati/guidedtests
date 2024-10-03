@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html>
+  <body>
+    <head>
+      <title>Structure IGT: Video</title>
+    </head>
+
+    <h1>Video example</h1>
+    <h2>Video without any alt text</h2>
+
+    <video width="320" height="240" controls>
+      <source src="sample-video.mp4" type="video/mp4" />
+      <source src="sample-video.ogg" type="video/ogg" />
+      Your browser does not support the video tag.
+    </video>
+    <h2>Video with appropriate aria-label</h2>
+    <video
+      width="320"
+      height="240"
+      aria-label="Sample video alt text with aria-label attribute"
+      controls
+    >
+      <source src="sample-video.mp4" type="video/mp4" />
+      <source src="sample-video.ogg" type="video/ogg" />
+      Your browser does not support the video tag.
+    </video>
+    <h2>Video with appropriate aria-labelledby</h2>
+    <p id="video-title">Dog playing</p>
+    <video
+      aria-labelledby="video-title"
+      width="320"
+      height="240"
+      controls
+    >
+      <source src="sample-video.mp4" type="video/mp4" />
+      <source src="sample-video.ogg" type="video/ogg" />
+      Your browser does not support the video tag.
+    </video>
+    <h2>Video with appropriate title attribute</h2>
+    <video
+      title="Sample video alt text with title attribute"
+      width="320"
+      height="240"
+      controls
+    >
+      <source src="sample-video.mp4" type="video/mp4" />
+      <source src="sample-video.ogg" type="video/ogg" />
+      Your browser does not support the video tag.
+    </video>
+
+    <h2>Video with empty aria-label</h2>
+    <video width="320" height="240" aria-label="" controls>
+      <source src="sample-video.mp4" type="video/mp4" />
+      <source src="sample-video.ogg" type="video/ogg" />
+      Your browser does not support the video tag.
+    </video>
+    <h2>Video with empty aria-labelledby</h2>
+    <p id="video-title1"></p>
+    <video
+      aria-labelledby="video-title1"
+      width="320"
+      height="240"
+      controls
+    >
+      <source src="sample-video.mp4" type="video/mp4" />
+      <source src="sample-video.ogg" type="video/ogg" />
+      Your browser does not support the video tag.
+    </video>
+    <h2>Video with empty title attribute</h2>
+    <video title="" width="320" height="240" controls>
+      <source src="sample-video.mp4" type="video/mp4" />
+      <source src="sample-video.ogg" type="video/ogg" />
+      Your browser does not support the video tag.
+    </video>
+    <h2>Video in iframe</h2>
+    <iframe
+      title="Getting started with axe DevTools Pro"
+      src="https://www.youtube.com/embed/dyU9yrRJ5Eg"
+      frameborder="0"
+      allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+      allowfullscreen=""
+    ></iframe>
+    <h2>Video in iframe(Same domain)</h2>
+    <iframe
+      src="for-iframe-video1.html"
+      frameborder="0"
+    ></iframe>
+  </body>
+</html>

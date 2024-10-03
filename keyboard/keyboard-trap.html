@@ -1,0 +1,230 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1.0"
+    />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>Keyboard trap (keyboard tool testing)</title>
+    <style>
+      .focus-missing:focus {
+        outline: 0;
+        box-shadow: none !important;
+      }
+
+      a:visited {
+        color: rgb(0, 0, 238);
+      }
+    </style>
+  </head>
+  <body>
+    <main>
+      <h1>Hello world</h1>
+      <p>This page has a keyboard trap!</p>
+      <fieldset>
+        <label for="single-check">
+          <input
+            type="checkbox"
+            id="single-check"
+            name="single"
+          />
+          Trap in single element
+        </label>
+        <label for="multi-check">
+          <input
+            type="checkbox"
+            id="multi-check"
+            name="multi"
+          />
+          Trap in multiple elements
+        </label>
+        <label for="escape-multi-check">
+          <input
+            type="checkbox"
+            id="escape-multi-check"
+            name="escape-multi"
+          />
+          Do not remove focus from multi trap when clicking
+          escape element
+        </label>
+        <label for="collapsible-tabstops-check">
+          <input
+            type="checkbox"
+            id="collapsible-tabstops-check"
+            name="collapsible-tabstops-check"
+          />
+          Add collapsible tabstops to multi trap
+        </label>
+        <label for="shadow-dom-check">
+          <input
+            type="checkbox"
+            id="shadow-dom-check"
+            name="shadow-dom-check"
+          />
+          Add shadow dom after multi trap
+        </label>
+      </fieldset>
+      <a href="#" class="focus-missing">outside trap 2</a>
+      <div>
+        <a href="#" id="focus-cycle-multi">
+          inside multi trap 1
+        </a>
+        <a href="#" id="toggle-collapsed">
+          inside multi trap 2 (click here to toggle
+          collapsed if enabled)
+        </a>
+        <div
+          style="display: none; visibility: hidden"
+          id="collapsed-container"
+        >
+          <a href="#">Collapsed Element 1</a>
+          <a href="#">Collapsed Element 2</a>
+        </div>
+        <a id="multi-escape-link" href="#">
+          inside multi trap 3
+        </a>
+        <a href="#" id="focus-cycle-multi-end">
+          inside multi trap 4
+        </a>
+      </div>
+      <div id="shadow-host"></div>
+
+      <div>
+        <button id="button-1">A</button>
+      </div>
+      <div>
+        <button>B</button>
+      </div>
+      <div>
+        <form id="trap-submit-form">
+          <a href="#" id="focus-cycle-single">
+            inside single trap 5 - click this to escape this
+            trap
+          </a>
+        </form>
+      </div>
+      <a href="#" id="escape-trap">outside trap 3</a>
+      <a href="#">outside trap 4</a>
+    </main>
+  </body>
+  <script>
+    const singleTrapElement = document.getElementById(
+      'focus-cycle-single'
+    )
+    const trapForm = document.getElementById(
+      'trap-submit-form'
+    )
+    const escapeMultiFormToggle = document.getElementById(
+      'escape-multi-check'
+    )
+    const multiEscapeLink = document.getElementById(
+      'multi-escape-link'
+    )
+    const multiTrapEndElement = document.getElementById(
+      'focus-cycle-multi-end'
+    )
+    const includeCollapsedCheck = document.getElementById(
+      'collapsible-tabstops-check'
+    )
+    const toggleCollapsedElement = document.getElementById(
+      'toggle-collapsed'
+    )
+    const collapsedContainer = document.getElementById(
+      'collapsed-container'
+    )
+
+    document
+      .getElementById('shadow-dom-check')
+      .addEventListener('change', e => {
+        let shadowHost =
+          document.getElementById('shadow-host')
+        if (e.target.checked) {
+          const shadow = shadowHost.attachShadow({
+            mode: 'closed'
+          })
+          const button = document.createElement('button')
+          button.textContent = "I'm in the shadow DOM"
+          shadow.appendChild(button.cloneNode(true))
+          button.textContent = "I'm in the shadow DOM too"
+          shadow.appendChild(button)
+        } else {
+          const newHost = document.createElement('div')
+          newHost.id = 'shadow-host'
+          shadowHost.replaceWith(newHost)
+        }
+      })
+    toggleCollapsedElement.addEventListener('click', () => {
+      if (
+        collapsedContainer.style.visibility === 'hidden'
+      ) {
+        collapsedContainer.style.visibility = 'visible'
+      } else {
+        collapsedContainer.style.visibility = 'hidden'
+      }
+    })
+    includeCollapsedCheck.addEventListener('change', e => {
+      if (e.target.checked) {
+        collapsedContainer.style.display = 'block'
+      } else {
+        collapsedContainer.style.display = 'none'
+      }
+    })
+
+    let allowMultiEscape = false
+
+    multiEscapeLink.addEventListener('click', () => {
+      if (escapeMultiFormToggle.checked) {
+        allowMultiEscape = true
+      } else {
+        document.getElementById('button-1').focus()
+      }
+    })
+
+    trapForm.addEventListener('submit', e => {
+      console.log('SUBMIT')
+      e.preventDefault()
+    })
+
+    const handler = e => {
+      if (
+        e.key !== 'Enter' &&
+        document.getElementById('single-check').checked
+      ) {
+        e.preventDefault()
+        e.stopPropagation()
+      }
+      trapForm.requestSubmit()
+      allowMultiEscape = false
+    }
+
+    singleTrapElement.addEventListener(
+      'keydown',
+      handler,
+      true
+    )
+    singleTrapElement.addEventListener(
+      'keyup',
+      handler,
+      true
+    )
+    singleTrapElement.addEventListener(
+      'keypress',
+      handler,
+      true
+    )
+    singleTrapElement.addEventListener('click', () => {
+      document.getElementById('escape-trap').focus()
+    })
+
+    multiTrapEndElement.addEventListener('blur', () => {
+      if (
+        document.getElementById('multi-check').checked &&
+        !allowMultiEscape
+      ) {
+        document.getElementById('focus-cycle-multi').focus()
+      }
+    })
+  </script>
+</html>

@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1.0"
+    />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>iframe with forms</title>
+  </head>
+  <body>
+    <h1>Form inside an iframe</h1>
+    <div>
+      <form id="formsimple" name="simple">
+        <label for="username">
+          <span>Username</span>
+        </label>
+        <input id="username" type="text" name="username" />
+        <div>Must be at least 3 characters in length</div>
+        <div>
+          <label for="password">
+            <span>Password*</span>
+          </label>
+          <input
+            id="password"
+            type="text"
+            name="password"
+          />
+        </div>
+        <div>
+          <fieldset>
+            <legend id="group">
+              What is your favorite color
+            </legend>
+            <input type="checkbox" name="color" id="blue" />
+            <label for="blue">Blue</label>
+            <input
+              type="checkbox"
+              name="color"
+              id="green"
+              checked
+            />
+            <label for="green">Green</label>
+          </fieldset>
+        </div>
+        <div
+          data-type="radio"
+          data-name="gender-wrapper"
+          id="gender"
+        >
+          Below are the radio buttons without group label
+          <br />
+          <span>
+            <input
+              type="radio"
+              name="gender"
+              id="female"
+              checked
+            />
+            <label for="female">Female</label>
+          </span>
+          <span>
+            <input type="radio" name="gender" id="male" />
+            <label for="male">Male</label>
+          </span>
+        </div>
+        <br />
+        <a class="button" href="../index.html">Sign In</a>
+      </form>
+    </div>
+  </body>
+</html>

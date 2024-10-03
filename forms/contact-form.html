@@ -1,0 +1,181 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <title>My test page</title>
+    <style>
+      .red {
+        color: #f00;
+      }
+      .bumpL {
+        margin-left: 3px;
+      }
+      form > .field {
+        position: relative;
+        padding: 10px 10px;
+        border-top: 1px solid #ddd;
+      }
+      label {
+        width: 90px;
+        text-align: right;
+      }
+    </style>
+  </head>
+  <body>
+    <div id="template">
+      <h1>Contact form</h1>
+      <form
+        id="contact_form"
+        onsubmit="validate();return false"
+      >
+        <div class="field">
+          <label for="username">
+            <span>Username</span>
+            <span class="red bumpL">*</span>
+          </label>
+          <input
+            type="text"
+            id="username"
+            aria-required="true"
+          />
+          <div id="field1" class="red"></div>
+        </div>
+        <div class="field">
+          <label for="email">
+            <span>Email Address</span>
+            <span class="red bumpL">*</span>
+          </label>
+          <input
+            type="email"
+            id="email"
+            aria-required="true"
+          />
+          <div id="field2" class="red"></div>
+        </div>
+        <div class="field">
+          <input
+            type="radio"
+            id="male"
+            name="gender"
+            value="male"
+          />
+          Male
+          <input
+            type="radio"
+            id="female"
+            name="gender"
+            value="female"
+          />
+          Female
+        </div>
+        <div class="field">
+          <p>
+            Below is the
+            <em>
+              e2e fixture for the issue -- form fields with
+              [name = id ]
+            </em>
+            (ticket - #1736)
+          </p>
+          <label for="country">Select the country:</label>
+          <select id="country">
+            <option disabled selected value>
+              -- select a country --
+            </option>
+            <option id="india" name="india" value="India">
+              India
+            </option>
+            <option
+              id="netherlands"
+              name="netherlands"
+              value="Netherlands"
+            >
+              Netherlands
+            </option>
+            <option id="usa" name="usa" value="USA">
+              USA
+            </option>
+            <option id="china" name="china" value="China">
+              China
+            </option>
+            <option id="japan" name="japan" value="Japan">
+              Japan
+            </option>
+          </select>
+        </div>
+        <div class="field">
+          <label for="password">
+            <span>New Password</span>
+            <span class="red bumpL">*</span>
+          </label>
+          <input
+            type="password"
+            id="password"
+            aria-required="true"
+          />
+          <div id="field3" class="red"></div>
+        </div>
+        <div class="field">
+          <input type="checkbox" id="newsletter" />
+          Send me monthly newsletter
+        </div>
+        <div class="field">
+          <input
+            type="checkbox"
+            id="english"
+            name="language"
+            value="english"
+          />
+          English
+          <input
+            type="checkbox"
+            id="french"
+            name="language"
+            value="french"
+          />
+          French
+        </div>
+        <div class="field">
+          <span>Provide Feedback</span>
+          <textarea id="feedback" rows="4"></textarea>
+        </div>
+        <div class="field">
+          <label for="birthday">Birthday:</label>
+          <input
+            type="date"
+            id="birthday"
+            name="birthday"
+          />
+        </div>
+        <div class="field">
+          <button type="submit">Submit</button>
+        </div>
+      </form>
+    </div>
+    <script>
+      //Form validation code
+      function validate() {
+        var username = document.getElementById('username')
+        if (
+          username.value == '' ||
+          typeof username.value == 'undefined'
+        ) {
+          document.getElementById('field1').innerHTML =
+            'Username is required'
+        }
+        var email = document.getElementById('email')
+        atpos = email.value.indexOf('@')
+        dotpos = email.value.lastIndexOf('.')
+        if (atpos < 1 || dotpos - atpos < 2) {
+          document.getElementById('field2').innerHTML =
+            'Please enter correct email ID'
+        }
+        var password = document.getElementById('password')
+        if (password.value.length < 5) {
+          document.getElementById('field3').innerHTML =
+            'Please enter valid password. Password length must be greater than 5 characters'
+        }
+      }
+    </script>
+  </body>
+</html>

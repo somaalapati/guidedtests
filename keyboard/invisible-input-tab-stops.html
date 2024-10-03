@@ -1,0 +1,389 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1.0"
+    />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>Invisible Inputs (keyboard tool testing)</title>
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/bulma@0.8.0/css/bulma.min.css"
+    />
+    <style>
+      .radio-group {
+        display: flex;
+      }
+
+      .radio {
+        margin-right: 5px;
+      }
+
+      .radio input[type='radio'] {
+        position: absolute;
+        opacity: 0;
+      }
+
+      .radio-overlay::before {
+        content: '';
+        display: inline-block;
+        width: 20px;
+        height: 20px;
+        -moz-border-radius: 7.5px;
+        -webkit-border-radius: 7.5px;
+        border-radius: 10px;
+        border: 2px solid black;
+      }
+
+      .radio input[type='radio']:focus + .radio-overlay {
+        box-shadow: 0 0 0 3px #fff, 0 0 0 6px #b51ad1;
+      }
+
+      .radio
+        input[type='radio']:checked
+        + .radio-overlay::before {
+        background-color: #3273dc;
+      }
+
+      .radio-overlay {
+        margin-right: 2px;
+      }
+
+      .checkbox input[type='checkbox'] {
+        position: absolute;
+        opacity: 0;
+      }
+
+      .checkbox-overlay::before {
+        content: '';
+        display: inline-block;
+        width: 20px;
+        height: 20px;
+        border: 2px solid black;
+      }
+
+      .checkbox
+        input[type='checkbox']:focus
+        + .checkbox-overlay {
+        box-shadow: 0 0 0 3px #fff, 0 0 0 6px #b51ad1;
+      }
+
+      .checkbox
+        input[type='checkbox']:checked
+        + .checkbox-overlay::before {
+        background-color: #3273dc;
+      }
+
+      .select {
+        position: absolute;
+        opacity: 0;
+      }
+
+      .select:focus + .select-overlay {
+        box-shadow: 0 0 0 3px #fff, 0 0 0 6px #b51ad1;
+      }
+
+      .select-overlay {
+        width: 80px;
+        height: 20px;
+        border: 1px solid black;
+        display: flex;
+        justify-content: space-between;
+      }
+
+      .select-overlay svg {
+        margin-top: -2px;
+        height: 15px;
+        width: 15px;
+      }
+
+      .option-overlay {
+        margin-left: 2px;
+        font-size: small;
+      }
+
+      .option-overlay:not(:first-child) {
+        display: none;
+      }
+
+      .input-select {
+        border: 2px solid black;
+        padding: 5px;
+        width: 300px;
+        height: 30px;
+        border-top-left-radius: 5px;
+        border-top-right-radius: 5px;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+      }
+
+      .input-select svg {
+        margin-top: -6px;
+        height: 20px;
+        width: 20px;
+      }
+
+      .input-select input {
+        position: absolute;
+        opacity: 0;
+      }
+
+      .input-select:focus-within {
+        box-shadow: 0 0 0 3px #fff, 0 0 0 6px #b51ad1;
+      }
+
+      .input-select-overlay {
+        display: none;
+        padding: 15px;
+        width: 300px;
+        border: 1px solid black;
+        border-top: none;
+      }
+
+      .input-select-overlay li:not(:last-child) {
+        border-bottom: 1px solid black;
+        padding-bottom: 5px;
+      }
+    </style>
+  </head>
+  <body>
+    <section class="section">
+      <div class="container">
+        <h1 class="title">Invisible Input Tap Stops</h1>
+      </div>
+      <hr />
+    </section>
+    <section class="section">
+      <div class="container">
+        <h2 class="title is-medium">
+          Invisible Radio with visual alternative
+        </h2>
+        <div
+          role="radiogroup"
+          aria-label="Select an option"
+          class="radio-group"
+        >
+          <div class="radio">
+            <input
+              type="radio"
+              name="radio"
+              id="radio1"
+              value="radio1"
+            />
+            <span
+              aria-hidden="true"
+              class="radio-overlay"
+            ></span>
+            <label for="radio1">Radio 1</label>
+          </div>
+          <div class="radio">
+            <input
+              type="radio"
+              name="radio"
+              id="radio2"
+              value="radio2"
+            />
+            <span
+              aria-hidden="true"
+              class="radio-overlay"
+            ></span>
+            <label for="radio2">Radio 2</label>
+          </div>
+        </div>
+      </div>
+      <hr />
+    </section>
+    <section class="section">
+      <div class="container">
+        <h2 class="title is-medium">
+          Invisible Checkbox with visual alternative
+        </h2>
+        <div class="checkbox">
+          <input
+            type="checkbox"
+            name="checked-checkbox"
+            id="checkbox-checked"
+            value="1"
+          />
+          <span
+            aria-hidden="true"
+            class="checkbox-overlay"
+          ></span>
+          <label for="checkbox-checked">
+            Checked Checkbox
+          </label>
+        </div>
+      </div>
+      <hr />
+    </section>
+    <section class="section">
+      <div class="container">
+        <h2 class="title is-medium">
+          Invisible Select with visual alternative
+        </h2>
+        <select aria-label="Select 1" class="select">
+          <option value="1">Option 1</option>
+          <option value="2">Option 2</option>
+          <option value="3">Option 3</option>
+        </select>
+        <div class="select-overlay">
+          <span class="option-overlay">Option 1</span>
+          <span class="option-overlay">Option 2</span>
+          <span class="option-overlay">Option 3</span>
+          <svg
+            aria-hidden="true"
+            xmlns="http://www.w3.org/2000/svg"
+            viewBox="0 0 320 512"
+            height="24"
+            width="24"
+          >
+            <path
+              fill="currentColor"
+              d="M182.6 470.6c-12.5 12.5-32.8 12.5-45.3 0l-128-128c-9.2-9.2-11.9-22.9-6.9-34.9S19 287.9 32 287.9h256c12.9 0 24.6 7.8 29.6 19.8s2.2 25.7-6.9 34.9l-128 128z"
+            ></path>
+          </svg>
+        </div>
+      </div>
+      <hr />
+    </section>
+    <section class="section">
+      <div class="container">
+        <h2 class="title is-medium">
+          Other invisible input with visual alternative
+        </h2>
+        <div class="input-select">
+          <div>
+            <div id="select-label">Select...</div>
+            <input
+              role="combobox"
+              aria-label="Select an option"
+              aria-describedby="select-label"
+              class="input"
+              inputmode="none"
+              aria-haspopup="true"
+              aria-controls="input-select-options"
+              aria-expanded="false"
+            />
+          </div>
+          <svg
+            aria-hidden="true"
+            xmlns="http://www.w3.org/2000/svg"
+            viewBox="0 0 320 512"
+            height="24"
+            width="24"
+          >
+            <path
+              fill="currentColor"
+              d="M182.6 470.6c-12.5 12.5-32.8 12.5-45.3 0l-128-128c-9.2-9.2-11.9-22.9-6.9-34.9S19 287.9 32 287.9h256c12.9 0 24.6 7.8 29.6 19.8s2.2 25.7-6.9 34.9l-128 128z"
+            ></path>
+          </svg>
+        </div>
+        <div
+          class="input-select-overlay"
+          id="input-select-options"
+        >
+          <div>
+            <input
+              type="checkbox"
+              name="checkbox-option-1"
+              id="checkbox-option-1"
+              value="Option 1"
+            />
+            <label for="checkbox-option-1">Option 1</label>
+          </div>
+          <div>
+            <input
+              type="checkbox"
+              name="checkbox-option-2"
+              id="checkbox-option-2"
+              value="Option 2"
+            />
+            <label for="checkbox-option-2">Option 2</label>
+          </div>
+          <div>
+            <input
+              type="checkbox"
+              name="checkbox-option-3"
+              id="checkbox-option-3"
+              value="Option 3"
+            />
+            <label for="checkbox-option-3">Option 3</label>
+          </div>
+        </div>
+      </div>
+      <hr />
+    </section>
+  </body>
+  <script>
+    const select = document.querySelector('.select')
+    const optionOverlays = document.querySelectorAll(
+      '.option-overlay'
+    )
+
+    select.addEventListener('change', () => {
+      const selectedOption =
+        select.options[select.selectedIndex]
+      optionOverlays.forEach(optionOverlay => {
+        optionOverlay.style.display = 'none'
+      })
+      optionOverlays[selectedOption.index].style.display =
+        'block'
+    })
+
+    const inputSelect =
+      document.querySelector('.input-select')
+    const inputSelectOverlay = document.querySelector(
+      '.input-select-overlay'
+    )
+    const inputSelectOptions = document.querySelectorAll(
+      '.input-select-overlay input'
+    )
+
+    const toggleInputSelect = () => {
+      const input = document.querySelector(
+        '.input-select input'
+      )
+      input.setAttribute(
+        'aria-expanded',
+        input.getAttribute('aria-expanded') === 'true'
+          ? 'false'
+          : 'true'
+      )
+      inputSelectOverlay.style.display =
+        inputSelectOverlay.style.display === 'block'
+          ? 'none'
+          : 'block'
+    }
+
+    inputSelect.addEventListener('click', () => {
+      toggleInputSelect()
+    })
+
+    inputSelect.addEventListener('keydown', e => {
+      if (e.code === 'Space') {
+        toggleInputSelect()
+      }
+    })
+
+    inputSelectOptions.forEach(inputSelectOption => {
+      inputSelectOption.addEventListener('change', () => {
+        const checkedOptions = document.querySelectorAll(
+          '.input-select-overlay input:checked'
+        )
+        const checkedOptionsValues = []
+        checkedOptions.forEach(checkedOption => {
+          checkedOptionsValues.push(checkedOption.value)
+        })
+        if (checkedOptionsValues.length === 0) {
+          checkedOptionsValues.push('Select...')
+        }
+        document.querySelector(
+          '.input-select'
+        ).textContent = checkedOptionsValues.join(', ')
+      })
+    })
+  </script>
+</html>

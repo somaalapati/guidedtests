@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1.0"
+    />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>Custom elements (keyboard tool testing)</title>
+    <style></style>
+  </head>
+  <body>
+    <template id="my-paragraph">
+      <style>
+        p {
+          color: white;
+          background-color: #666;
+          padding: 5px;
+        }
+      </style>
+      <p>
+        <slot name="my-text">My default text</slot>
+      </p>
+    </template>
+    <h1>Custom elements</h1>
+    <section>
+      <h2>Slotted element</h2>
+      <test-el>
+        <a slot="my-text" href="#">My override</a>
+        <a slot="test" href="#">Not rendered</a>
+      </test-el>
+      <test-el>
+        <a href="#">Anchor</a>
+      </test-el>
+    </section>
+    <script>
+      class TestEl extends HTMLElement {
+        constructor() {
+          super()
+          let template =
+            document.getElementById('my-paragraph')
+          let templateContent = template.content
+
+          const shadowRoot = this.attachShadow({
+            mode: 'open'
+          })
+          shadowRoot.appendChild(
+            templateContent.cloneNode(true)
+          )
+        }
+      }
+
+      customElements.define('test-el', TestEl)
+    </script>
+  </body>
+</html>

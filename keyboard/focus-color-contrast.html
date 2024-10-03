@@ -1,0 +1,96 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1.0"
+    />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>Focus color contrast test page</title>
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/bulma@0.8.0/css/bulma.min.css"
+    />
+    <style>
+      .bad:focus {
+        background: #eee;
+        color: #fff;
+      }
+      .always-bad {
+        background: #eee;
+        color: #fff;
+      }
+      .other-bad:focus {
+        background: #eee;
+        color: #ffe;
+      }
+      .bold {
+        font-weight: bold;
+        font-size: 15pt;
+      }
+      .bold-bad-focus:focus {
+        background: #88f;
+        color: #fff;
+      }
+      .bold-ok:focus {
+        background: #88e;
+        color: #fff;
+      }
+    </style>
+  </head>
+  <body>
+    <h1>Color contrast analysis on focus</h1>
+    <ul>
+      <li><a class="bad" href="#">One (violation)</a></li>
+      <li>
+        <button class="bad" type="button">
+          Two (violation)
+        </button>
+      </li>
+      <li>
+        <button class="bad" type="button">
+          Three (violation)
+        </button>
+      </li>
+      <li><a href="#">Four (no violation)</a></li>
+      <li>
+        <a href="#" class="always-bad bad">
+          Five (no violation)
+        </a>
+      </li>
+      <li>
+        <a href="#" class="always-bad other-bad">
+          Six (violation)
+        </a>
+      </li>
+      <li>
+        <a href="#" class="bold bold-bad-focus">
+          Seven (violation)
+        </a>
+      </li>
+      <li>
+        <a href="#" class="bold bold-ok">
+          Eight (no violation)
+        </a>
+      </li>
+      <li
+        role="tab"
+        tabindex="0"
+        class="always-bad other-bad"
+      >
+        Nine (violation)
+      </li>
+      <li
+        role="tab"
+        tabindex="0"
+        class="bold bold-bad-focus"
+      >
+        Ten (violation)
+      </li>
+      <li role="tab" tabindex="0" class="bold bold-ok">
+        Eleven (no violation)
+      </li>
+    </ul>
+  </body>
+</html>
